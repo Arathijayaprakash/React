@@ -5,6 +5,19 @@
     display: flex;
     justify-content: space-between;
   }
+  .cart{
+    margin-right: 10px;
+  }
+  .cart span{
+    margin-bottom: 10px;
+  }
+  .round{
+    border-radius: 1rem;
+    background-color: white;
+    color: indigo;
+    width: 20px;
+    margin-bottom: 5px;
+  }
   
   .list {
     display: flex;

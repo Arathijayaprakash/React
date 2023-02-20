@@ -1,0 +1,21 @@
+.cart{
+  padding: 1rem;
+}
+.cart:hover{
+  background-color: rgba(196, 52, 196, 0.904);
+  cursor: pointer;
+
+}
+.cart .round{
+  background-color: white;
+  color: rgb(83, 6, 116);
+  font-size: large;
+  border-radius: 20px;
+  padding: .05rem;
+  
+}
+.cart .round .count{
+  margin-left: 4px;
+  margin-right: 4px;
+
+}

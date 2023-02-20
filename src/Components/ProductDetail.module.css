@@ -1,0 +1,15 @@
+.products{
+    margin: 2rem;
+    max-width: 600px;
+    margin-left: 300px;
+}
+.products h2{
+    margin-left: 220px;
+}
+.product{
+    padding: 1rem;
+}
+.product img{
+    width: 100%;
+    object-fit: cover;
+}

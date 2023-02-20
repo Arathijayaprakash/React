@@ -1,0 +1,25 @@
+.carousel{
+    height: 300px;
+    margin-top: -16px;
+    background-image: url('https://images-static.nykaa.com/creatives/38b597d6-40f2-40f9-a22e-4e8183d49c52/default.jpg?tr=w-1200,cm-pad_resize');  
+    animation: changeImage 15s linear infinite;
+  }
+  
+  @keyframes changeImage{
+    0%{
+        background-image: url('https://images-static.nykaa.com/creatives/7c5d3923-4a41-4e98-b3b4-4f8b230152b3/default.jpg?tr=w-1200,cm-pad_resize');
+       
+    }
+  
+    50%{
+        background-image: url('https://images-static.nykaa.com/creatives/7aca11ea-a043-4777-84fb-b7e2058edf7e/default.jpg?tr=w-1200,cm-pad_resize');
+       
+    }
+    100%{
+        background-image: url('https://images-static.nykaa.com/creatives/6908c7a1-0dc5-447d-8396-200bd11b3a51/default.jpg?tr=w-1200,cm-pad_resize');
+     
+    }
+  }
+
+ 
+  

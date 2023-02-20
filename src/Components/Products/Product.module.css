@@ -1,15 +1,22 @@
 .products {
-   display: flex;
-    
+   display: inline-flex;
+   flex-direction: row;
+   text-align: center;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 3rem ;
+   
    
   }
   
-  .list {
-    
-    gap: 1rem;
-
+  .actions{
+    display: flex;
+  justify-content: space-around;
+   
   }
-
+  .remove{
+    padding: .5rem;
+  }
   
   .item a {
     text-decoration: none;
@@ -36,7 +43,7 @@
   
   
   .content {
-    padding: 1rem;
+    padding: .5rem;
   }
   .item h3 {
     margin: 1rem .5rem;
