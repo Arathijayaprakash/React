@@ -3,10 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const uiSlice = createSlice({
   name: "ui",
   initialState: {
-    loginVisible: localStorage.getItem('loginVisible')?localStorage.getItem('loginVisible'):true,
+    loginVisible:true,
     logoutVisible: false,
     isUserlogged: false,
-    cartVisible:false
+    cartVisible:false,
+    cartIconVisible:true,
+    isAdminlogged:false
   },
   reducers: {
     loginShow(state) {
@@ -20,6 +22,12 @@ const uiSlice = createSlice({
     },
     cartShown(state){
       state.cartVisible=!state.cartVisible
+    },
+    cartIconShown(state){
+      state.cartIconVisible=!state.cartIconVisible
+    },
+    adminLog(state){
+      state.isAdminlogged=!state.isAdminlogged
     }
   },
 });

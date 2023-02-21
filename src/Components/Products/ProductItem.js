@@ -6,13 +6,14 @@ import { cartActions } from "../../store/cart-slice";
 import { useSelector, useDispatch } from "react-redux";
 
 const ProductItem = (props) => {
-  const { id, title, price, image,quantity } = props;
+  const { id, title, price, image, quantity } = props;
   const dispatch = useDispatch();
   const userLogged = useSelector((state) => state.ui.isUserlogged);
+  const adminLogged = useSelector((state) => state.ui.isAdminlogged);
   const onAddToCartHandler = () => {
     userLogged
-      ? dispatch(cartActions.addToCart({ id, title, price, image,quantity }))
-      : alert("please Login");
+      ? dispatch(cartActions.addToCart({ id, title, price, image, quantity }))
+      : alert("Please Login...");
   };
   return (
     <div className={classes.products}>
@@ -22,13 +23,15 @@ const ProductItem = (props) => {
           <img src={image} alt={title} />
           <div className={classes.content}>
             <h4>₹{price}</h4>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={onAddToCartHandler}
-            >
-              Add to Cart
-            </Button>
+            {!adminLogged && (
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={onAddToCartHandler}
+              >
+                Add to Cart
+              </Button>
+            )}
           </div>
         </Card>
       </ul>

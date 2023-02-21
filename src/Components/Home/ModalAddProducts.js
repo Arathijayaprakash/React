@@ -69,6 +69,7 @@ const ModalAddProducts = (props) => {
           onChange={onSetTitle}
           placeholder="Enter Product Title"
           fullWidth
+          required
         />
         <TextField
           id="standard-full-width"
@@ -77,6 +78,7 @@ const ModalAddProducts = (props) => {
           onChange={onSetPrice}
           placeholder="Enter Product Price"
           fullWidth
+          required
         />
         <TextField
           id="standard-full-width"
@@ -85,6 +87,7 @@ const ModalAddProducts = (props) => {
           onChange={onSetCategory}
           placeholder="Enter Product Category"
           fullWidth
+          required
         />
         <TextField
           id="standard-full-width"
@@ -93,6 +96,7 @@ const ModalAddProducts = (props) => {
           onChange={onSetImage}
           placeholder="Enter URL of Product Imag"
           fullWidth
+          required
         />
 
         <Button

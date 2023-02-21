@@ -33,4 +33,6 @@
   .list a.active {
     color: var(--color-primary-800);
   }
-  
+  .background{
+    background-image: linear-gradient(to right, #b82b6c, #bd4c8e);
+  }

@@ -3,7 +3,7 @@
     align-items: flex-start;
     text-decoration: none;
     justify-content: space-around;
-    background-color: rgb(226, 214, 238);
+    background-image: linear-gradient(to right, #a13d51, #e994b0);
     margin-top: 4rem;
     height: 50px;
 }
@@ -11,7 +11,7 @@
     text-decoration: none;
     margin-top: 10px;
     list-style-type: none;
-    color: blueviolet;
+    color: rgb(246, 246, 247);
     font-size: large;
     
 }

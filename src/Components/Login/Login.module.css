@@ -1,25 +1,34 @@
 .form {
-    max-width: 40rem;
-    margin: 2rem auto;
-    padding: 2rem 1rem;
-    background-color: rgba(255, 99, 71, 0.4);
-    border-radius: 1rem;
+    max-width: 30rem;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background-image: linear-gradient(to right, #e7a7b4, #e994b0);
+    border-radius: .2rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
   }
-  
+  .form h1{
+    text-align: center;
+    margin-top: 0px;
+  }
   .form label,
   .form input,
   .form textarea {
     display: block;
     width: 100%;
-    padding: .5rem;
+    padding: auto;
     color: black;
+    font-weight: bolder;
   }
   
   .form input,
   .form textarea {
     font: inherit;
     padding: .25rem;
-    border-radius: .5rem;
+    border-radius: .2rem;
   }
   
   .actions {
@@ -27,6 +36,14 @@
     gap: 1rem;
     justify-content: flex-end;
     align-items: center;
+  }
+  .actions p{
+    color: rgb(197, 25, 76);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .actions p:hover{
+    color: rgb(117, 32, 61);
   }
   
   .actions Button {
@@ -37,6 +54,8 @@
     background-color:white;
     color: var(--color-gray-800);
     border: none;
+    font-weight: bolder;
+
   }
   
   .actions a {
@@ -46,7 +65,8 @@
   }
   
   .actions Button:hover {
-    background-color: rgb(201, 63, 139);
+    background-color: rgb(138, 32, 63);
+    color: white;
   }
   
   .actions a:hover {

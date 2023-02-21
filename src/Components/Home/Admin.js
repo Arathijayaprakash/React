@@ -9,42 +9,42 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button, Modal } from "@mui/material";
 import ModalAddProducts from "./ModalAddProducts";
+import { redirect } from "react-router-dom";
+import classes from './Admin.module.css'
 
 const Admin = () => {
   const [products, setProducts] = React.useState([]);
+  const fetchProducts = async () => {
+    const response = await fetch(
+      "https://ebeautyapp-55c72-default-rtdb.firebaseio.com/products.json"
+    );
+    const data = await response.json();
+    const loadedProducts = [];
+    for (const key in data) {
+      loadedProducts.push({
+        id: key,
+        title: data[key].title,
+        price: data[key].price,
+        category: data[key].category,
+        image: data[key].image,
+      });
+    }
+    setProducts(loadedProducts);
+  };
   useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await fetch(
-        "https://ebeautyapp-55c72-default-rtdb.firebaseio.com/products.json"
-      );
-      const data = await response.json();
-      const loadedProducts = [];
-      for (const key in data) {
-        loadedProducts.push({
-          id: key,
-          title: data[key].title,
-          price: data[key].price,
-          category: data[key].category,
-          image: data[key].image,
-        });
-      }
-      setProducts(loadedProducts);
-    };
     fetchProducts();
   }, []);
-  
+
   const onDeleteHandler = async (id) => {
-    const proceed = window.confirm("Are you sure?");
-    if (proceed) {
-      const response = await fetch(
-        `https://ebeautyapp-55c72-default-rtdb.firebaseio.com/products.json/${id}`,
-        {
-          method: "DELETE",
-        }
-      );
-      const data = await response.json();
-      setProducts(data);
+    const response = fetch(
+      `https://ebeautyapp-55c72-default-rtdb.firebaseio.com/products/${id}.json`,
+      { method: "DELETE" }
+    );
+    if (!response.ok) {
+      console.log("Error while deleting");
     }
+    fetchProducts();
+    return redirect("/adminHome");
   };
 
   const [open, setOpen] = React.useState(false);
@@ -56,6 +56,11 @@ const Admin = () => {
   };
   return (
     <TableContainer component={Paper}>
+      <div className={classes.add}>
+        <Button color="info" variant="contained" onClick={handleOpenModal}>
+          Add Products
+        </Button>
+      </div>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -87,7 +92,6 @@ const Admin = () => {
               </TableCell>
             </TableRow>
           ))}
-          <Button onClick={handleOpenModal}>Add Products</Button>
         </TableBody>
       </Table>
       <Modal open={open} onClose={handleCloseModal}>
