@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Card } from "@mui/material";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import CartItem from "./CartItem";
 import classes from "./Cart.module.css";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
@@ -10,26 +10,27 @@ const Cart = () => {
   const cartProducts = useSelector((state) => state.cart.cartItems);
   const cartQuantity = useSelector((state) => state.cart.cartTotalQuantity);
   const cartTotalAmount = useSelector((state) => state.cart.cartTotalAmount);
-const dispatch=useDispatch()
-  const placeOrderHandler = () => {
-    const items={
-      cartProducts:cartProducts
-    }
-    fetch(
-      "https://ebeautyapp-55c72-default-rtdb.firebaseio.com/orders.json",
-      {
-        method: "POST",
-        body: JSON.stringify(items),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    ).then(alert("Order placed successfully"))
-    
+  const userLogged = useSelector((state) => state.ui.isUserlogged);
+
+  const dispatch = useDispatch();
+  const clearCartHandler=()=>{
     dispatch(cartActions.clearCart())
-    localStorage.setItem('cartItems',[])
-    
-  
+  }
+
+  const placeOrderHandler = () => {
+    const items = {
+      cartProducts: cartProducts,
+    };
+    fetch("https://ebeautyapp-55c72-default-rtdb.firebaseio.com/orders.json", {
+      method: "POST",
+      body: JSON.stringify(items),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(alert("Order placed successfully"));
+
+    dispatch(cartActions.clearCart());
+    localStorage.setItem("cartItems", []);
   };
 
   let cart = (
@@ -48,9 +49,28 @@ const dispatch=useDispatch()
             }}
           />
         ))}
-        {<div>SubTotal:{cartTotalAmount}</div>}
       </ul>
-      <Button onClick={placeOrderHandler}>Place order</Button>
+      <div className={classes.summary}>
+        <div className={classes.total}>
+          Subtotal:<div className={classes.amount}>₹{cartTotalAmount}</div>
+        </div>
+        <div className={classes.actions}>
+          <Button variant="contained" color="error" onClick={clearCartHandler}>
+            CLEAR CART
+          </Button>
+          {userLogged ? (
+            <Button
+              variant="contained"
+              style={{ backgroundColor: "#b82b6c",marginLeft:'10px' }}
+              onClick={placeOrderHandler}
+            >
+              PLACE ORDER
+            </Button>
+          ) : (
+            <p>Please login to place order</p>
+          )}
+        </div>
+      </div>
     </div>
   );
   if (cartQuantity === 0) {
@@ -58,7 +78,7 @@ const dispatch=useDispatch()
   }
 
   return (
-    <Card className={classes.cart} sx={{ maxWidth: 800 }}>
+    <Card className={classes.cart}>
       <div className={classes.heading}>
         <ArrowBackIosNewIcon />
         <h2>Your Shopping Cart</h2>

@@ -1,9 +1,7 @@
 import * as React from "react";
-// import { DUMMY_PRODUCTS } from "./DUMMYPRODUCTS";
 import ProductItem from "./ProductItem";
 import { useEffect } from "react";
-// import { useDispatch,useSelector } from "react-redux";
-// import { productActions } from "../../store/product-slice";
+
 
 export default function Products() {
   const [products, setProducts] = React.useState([]);
@@ -27,11 +25,7 @@ export default function Products() {
     };
     fetchProducts()
   }, []);
-//   const dispatch=useDispatch()
-// useEffect(()=>{
-//   dispatch(productActions.fetchProducts())
-// },[dispatch])
-// const products=useSelector(state=>state.product.products)
+
   
   const productList = products.map((product) => (
     <ProductItem

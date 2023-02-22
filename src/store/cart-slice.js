@@ -28,9 +28,9 @@ const cartSlice = createSlice({
         
       } else {
         existingItem.quantity++;
-        existingItem.totalPrice = existingItem.totalPrice + newItem.price;
+        existingItem.totalPrice = +existingItem.totalPrice + +newItem.price;
       }
-      state.cartTotalAmount+=newItem.price;
+      state.cartTotalAmount=+state.cartTotalAmount + +newItem.price;
       localStorage.setItem('cartItems',JSON.stringify(state.cartItems))
     },
     removeFromCart(state, action) {

@@ -45,10 +45,15 @@ export default function MainNavigation() {
       userLogged && dispatch(uiActions.userLog());
     }
     dispatch(uiActions.logoutShow());
-    dispatch(cartActions.clearCart());
+    
     {
       adminLogged && dispatch(uiActions.adminLog());
     }
+    {
+      adminLogged && dispatch(uiActions.cartIconShown())
+    }
+    dispatch(cartActions.clearCart())
+    localStorage.clear()
   };
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);

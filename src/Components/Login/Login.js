@@ -8,6 +8,7 @@ import { uiActions } from "../../store/ui-slice";
 
 export default function Login(props) {
   
+  
 
   const [signupClicked, setSignupClicked] = useState(false);
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function Login(props) {
   const passwordHandler = (event) => {
     setPassword(event.target.value);
   };
+  
   const authenticate = (event) => {
     event.preventDefault();
     if (email === "admin@gmail.com" && password === "admin") {
@@ -86,15 +88,16 @@ export default function Login(props) {
   };
   return (
     <div>
-      <form className={classes.form}>
+      <form className={classes.form} onSubmit={authenticate}>
         <h1>{signupClicked ? "Sign Up" : "Login"}</h1>
         <p>
           <label>Username</label>
-          <input type="email" name="email" onChange={emailHandler} />
+          <input  name="email" onChange={emailHandler} required/>
+          
         </p>
         <p>
           <label>Password</label>
-          <input type="password" name="password" onChange={passwordHandler} />
+          <input type="password" name="password" onChange={passwordHandler} required/>
         </p>
         <div className={classes.actions}>
           {signupClicked ? (
@@ -105,7 +108,7 @@ export default function Login(props) {
           {signupClicked ? (
             <Button onClick={createUserHandler}>Create Account</Button>
           ) : (
-            <Button color="primary" onClick={authenticate}>
+            <Button color="primary" type="submit">
               Login
             </Button>
           )}
