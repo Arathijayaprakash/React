@@ -86,7 +86,10 @@ const Admin = () => {
               <TableCell align="right">{product.category}</TableCell>
               <TableCell align="right">{product.image}</TableCell>
               <TableCell align="right">
-                <Button onClick={() => onDeleteHandler(product.id)}>
+              <Button color="warning" >
+                  Edit
+                </Button>
+                <Button color="error" onClick={() => onDeleteHandler(product.id)}>
                   Delete
                 </Button>
               </TableCell>

@@ -7,9 +7,6 @@ import { useDispatch } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 
 export default function Login(props) {
-  
-  
-
   const [signupClicked, setSignupClicked] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,7 +18,7 @@ export default function Login(props) {
   const passwordHandler = (event) => {
     setPassword(event.target.value);
   };
-  
+
   const authenticate = (event) => {
     event.preventDefault();
     if (email === "admin@gmail.com" && password === "admin") {
@@ -40,7 +37,7 @@ export default function Login(props) {
                 alert("login successfull");
                 navigate("../home");
                 localStorage.setItem("user", email);
-               dispatch(uiActions.logoutShow());
+                dispatch(uiActions.logoutShow());
                 dispatch(uiActions.userLog());
               } else {
                 alert("Password is incorrect");
@@ -54,6 +51,9 @@ export default function Login(props) {
   };
   const signUpHandler = () => {
     setSignupClicked(true);
+  };
+  const signUpFalseHandler = () => {
+    setSignupClicked(false);
   };
   const createUserHandler = () => {
     const users = {
@@ -92,16 +92,20 @@ export default function Login(props) {
         <h1>{signupClicked ? "Sign Up" : "Login"}</h1>
         <p>
           <label>Username</label>
-          <input  name="email" onChange={emailHandler} required/>
-          
+          <input name="email" onChange={emailHandler} required />
         </p>
         <p>
           <label>Password</label>
-          <input type="password" name="password" onChange={passwordHandler} required/>
+          <input
+            type="password"
+            name="password"
+            onChange={passwordHandler}
+            required
+          />
         </p>
         <div className={classes.actions}>
           {signupClicked ? (
-            ""
+            <p onClick={signUpFalseHandler}>Allready have an account</p>
           ) : (
             <p onClick={signUpHandler}>new to GlaMMYaPP?</p>
           )}

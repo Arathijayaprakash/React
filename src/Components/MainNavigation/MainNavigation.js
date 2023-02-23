@@ -8,12 +8,13 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 import { cartActions } from "../../store/cart-slice";
 import classes from "./MainNavigation.module.css";
 import CartIcon from "../Cart/CartIcon";
+
 
 export default function MainNavigation() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ export default function MainNavigation() {
     welcomeNote = `Welcome ${user}`;
   }
   const onLoginHandler = () => {
+   
     navigate("/login");
     dispatch(uiActions.loginShow());
     localStorage.setItem("loginVisible", loginVisible);
@@ -45,15 +47,15 @@ export default function MainNavigation() {
       userLogged && dispatch(uiActions.userLog());
     }
     dispatch(uiActions.logoutShow());
-    
+
     {
       adminLogged && dispatch(uiActions.adminLog());
     }
     {
-      adminLogged && dispatch(uiActions.cartIconShown())
+      adminLogged && dispatch(uiActions.cartIconShown());
     }
-    dispatch(cartActions.clearCart())
-    localStorage.clear()
+    dispatch(cartActions.clearCart());
+    localStorage.clear();
   };
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -87,12 +89,32 @@ export default function MainNavigation() {
               "aria-labelledby": "basic-button",
             }}
           >
-          {adminLogged &&             <Link to='adminHome' style={{textDecoration:'none',color:'salmon'}}><MenuItem onClick={handleClose}>Home</MenuItem></Link>
-}
-            <Link to='products' style={{textDecoration:'none',color:'salmon'}}><MenuItem onClick={handleClose}>All Products</MenuItem></Link>
-            <Link to='makeup' style={{textDecoration:'none',color:'salmon'}}><MenuItem onClick={handleClose}>MakeUp</MenuItem></Link>
-            <Link to='skin' style={{textDecoration:'none',color:'salmon'}}><MenuItem onClick={handleClose}>Skin</MenuItem></Link>
-            <Link to='hair' style={{textDecoration:'none',color:'salmon'}}><MenuItem onClick={handleClose}>Hair</MenuItem></Link>
+            {adminLogged && (
+              <Link
+                to="adminHome"
+                style={{ textDecoration: "none", color: "salmon" }}
+              >
+                <MenuItem onClick={handleClose}>Home</MenuItem>
+              </Link>
+            )}
+            <Link
+              to="products"
+              style={{ textDecoration: "none", color: "salmon" }}
+            >
+              <MenuItem onClick={handleClose}>All Products</MenuItem>
+            </Link>
+            <Link
+              to="makeup"
+              style={{ textDecoration: "none", color: "salmon" }}
+            >
+              <MenuItem onClick={handleClose}>MakeUp</MenuItem>
+            </Link>
+            <Link to="skin" style={{ textDecoration: "none", color: "salmon" }}>
+              <MenuItem onClick={handleClose}>Skin</MenuItem>
+            </Link>
+            <Link to="hair" style={{ textDecoration: "none", color: "salmon" }}>
+              <MenuItem onClick={handleClose}>Hair</MenuItem>
+            </Link>
           </Menu>
 
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>

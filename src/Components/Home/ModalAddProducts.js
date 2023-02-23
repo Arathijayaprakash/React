@@ -43,10 +43,13 @@ const ModalAddProducts = (props) => {
         },
       }
     );
-   const data= response.json()
-   alert("Product Added SuccessFully")
    
-   console.log(data)
+      const data= response.json()
+      alert("Product Added SuccessFully")
+      
+      console.log(data)
+    
+   
   }
   return (
     <div
@@ -70,6 +73,7 @@ const ModalAddProducts = (props) => {
           placeholder="Enter Product Title"
           fullWidth
           required
+          defaultValue={props.title}
         />
         <TextField
           id="standard-full-width"
@@ -79,6 +83,7 @@ const ModalAddProducts = (props) => {
           placeholder="Enter Product Price"
           fullWidth
           required
+          defaultValue={props.price}
         />
         <TextField
           id="standard-full-width"
@@ -88,6 +93,7 @@ const ModalAddProducts = (props) => {
           placeholder="Enter Product Category"
           fullWidth
           required
+          defaultValue={props.category}
         />
         <TextField
           id="standard-full-width"
@@ -97,6 +103,7 @@ const ModalAddProducts = (props) => {
           placeholder="Enter URL of Product Imag"
           fullWidth
           required
+          defaultValue={props.image}
         />
 
         <Button
