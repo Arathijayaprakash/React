@@ -10,11 +10,14 @@ import Paper from "@mui/material/Paper";
 import { Button, Modal } from "@mui/material";
 import ModalAddProducts from "./ModalAddProducts";
 import { redirect } from "react-router-dom";
-import classes from './Admin.module.css'
+import classes from "./Admin.module.css";
+
 
 const Admin = () => {
   const [products, setProducts] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
   const fetchProducts = async () => {
+    setIsLoading(true);
     const response = await fetch(
       "https://ebeautyapp-55c72-default-rtdb.firebaseio.com/products.json"
     );
@@ -30,21 +33,30 @@ const Admin = () => {
       });
     }
     setProducts(loadedProducts);
+    setIsLoading(false);
   };
   useEffect(() => {
     fetchProducts();
   }, []);
 
   const onDeleteHandler = async (id) => {
-    const response = fetch(
-      `https://ebeautyapp-55c72-default-rtdb.firebaseio.com/products/${id}.json`,
-      { method: "DELETE" }
-    );
-    if (!response.ok) {
-      console.log("Error while deleting");
+
+    const proceed=window.confirm('Are you sure?')
+
+    if(proceed){
+      const response = fetch(
+        `https://ebeautyapp-55c72-default-rtdb.firebaseio.com/products/${id}.json`,
+        { method: "DELETE" }
+      );
+      if (!response.ok) {
+        console.log("Error while deleting");
+      }
+      fetchProducts();
+      return redirect("/adminHome");
     }
-    fetchProducts();
-    return redirect("/adminHome");
+    
+    
+    
   };
 
   const [open, setOpen] = React.useState(false);
@@ -73,28 +85,33 @@ const Admin = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map((product) => (
-            <TableRow
-              key={product.title}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                {product.id}
-              </TableCell>
-              <TableCell align="right">{product.title}</TableCell>
-              <TableCell align="right">{product.price}</TableCell>
-              <TableCell align="right">{product.category}</TableCell>
-              <TableCell align="right">{product.image}</TableCell>
-              <TableCell align="right">
-              <Button color="warning" >
-                  Edit
-                </Button>
-                <Button color="error" onClick={() => onDeleteHandler(product.id)}>
-                  Delete
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
+          {isLoading ? (
+            <p className={classes.loading}>Loading...</p>
+          ) : (
+            products.map((product) => (
+              <TableRow
+                key={product.title}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  {product.id}
+                </TableCell>
+                <TableCell align="right">{product.title}</TableCell>
+                <TableCell align="right">{product.price}</TableCell>
+                <TableCell align="right">{product.category}</TableCell>
+                <TableCell align="right">{product.image}</TableCell>
+                <TableCell align="right">
+                  
+                  <Button
+                    color="error"
+                    onClick={() => onDeleteHandler(product.id)}
+                  >
+                    Delete
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))
+          )}
         </TableBody>
       </Table>
       <Modal open={open} onClose={handleCloseModal}>

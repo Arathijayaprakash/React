@@ -31,6 +31,7 @@ export default function Login(props) {
       fetch("https://ebeautyapp-55c72-default-rtdb.firebaseio.com//users.json")
         .then((response) => response.json())
         .then((data) => {
+          let flag = false;
           for (const key in data) {
             if (email === data[key].email) {
               if (password === data[key].password) {
@@ -39,12 +40,16 @@ export default function Login(props) {
                 localStorage.setItem("user", email);
                 dispatch(uiActions.logoutShow());
                 dispatch(uiActions.userLog());
+                flag = true;
+                break;
               } else {
                 alert("Password is incorrect");
+                break;
               }
-            } else {
-              alert("User does not exist");
             }
+          }
+          if (!flag) {
+            alert("User does not exist");
           }
         });
     }
@@ -66,6 +71,7 @@ export default function Login(props) {
         for (const key in data) {
           if (email === data[key].email) {
             alert("User already exists");
+            break;
           } else {
             fetch(
               "https://ebeautyapp-55c72-default-rtdb.firebaseio.com//users.json",
@@ -105,7 +111,7 @@ export default function Login(props) {
         </p>
         <div className={classes.actions}>
           {signupClicked ? (
-            <p onClick={signUpFalseHandler}>Allready have an account</p>
+            <p onClick={signUpFalseHandler}>Allready have an account?</p>
           ) : (
             <p onClick={signUpHandler}>new to GlaMMYaPP?</p>
           )}

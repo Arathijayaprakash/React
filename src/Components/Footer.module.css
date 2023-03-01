@@ -1,12 +1,52 @@
 .footer {
-    /* position: fixed; */
-    left: 0;
     bottom: 0;
     width: 100%;
     background-color: rgb(19, 18, 18);
-    color: rgb(156, 99, 118);
-    display: flex;
-    text-align: center;
-    justify-content: space-around;
-    text-decoration: underline;
+    color: rgb(167, 130, 142);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   }
+  .footer .content{
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .footer .line hr{
+   width: 80%;
+    border: none;
+    height: 1px;
+    color: #333; 
+    background-color: #333; 
+  }
+  .footer h3{
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  .footer .about{
+    width: 30rem;
+    height: 80px;
+    
+  }
+  .footer .about .appname{
+    margin-left: 1rem;
+    font-weight: 600;
+  }
+  .footer .email{
+    display: flex;
+  }
+  .email:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+ .emailText{
+  font-weight: 450;
+  margin-left: 5px;
+  margin-top: -3px;
+ }
+ .footer .icons{
+  display: flex;
+  justify-content: right;
+  padding-right: 10rem;
+ }
+ .footer .icons p{
+  cursor: pointer;
+ }

@@ -9,9 +9,7 @@ const CategoryNav = () => {
         <NavLink
           className={({ isActive }) => (isActive ? classes.active : undefined)}
           to="/makeup"
-          
         >
-        
           <li>MakeUp</li>
         </NavLink>
         <NavLink

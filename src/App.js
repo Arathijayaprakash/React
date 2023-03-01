@@ -15,7 +15,7 @@ function App() {
       path: "/",
       element: <RootLayout />,
       children: [
-        { path: "/", element: <ProductListPage /> },
+        { index:true, element: <ProductListPage /> },
         { path: "products", element: <ProductListPage /> },
         { path: "login", element: <Loginpage /> },
         { path: "home", element: <HomePage /> },
