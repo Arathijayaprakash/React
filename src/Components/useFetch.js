@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 
 const useFetch = (url) => {
   const [products, setProducts] = useState([]);
+ 
   useEffect(() => {
     const fetchProducts = async () => {
+      
       const response = await fetch(url);
       const data = await response.json();
       const loadedProducts = [];
@@ -17,6 +19,7 @@ const useFetch = (url) => {
         });
       }
       setProducts(loadedProducts);
+      
     };
     fetchProducts();
   }, [url]);

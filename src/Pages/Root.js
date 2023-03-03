@@ -10,6 +10,7 @@ import Footer from "../Components/Footer";
 const RootLayout = () => {
   const cartVisible = useSelector((state) => state.ui.cartVisible);
   const cart = useSelector((state) => state.cart);
+  const adminLogged = useSelector((state) => state.ui.isAdminlogged);
 
   useEffect(() => {
     fetch("https://ebeautyapp-55c72-default-rtdb.firebaseio.com/cart.json", {
@@ -23,7 +24,7 @@ const RootLayout = () => {
       <CategoryNav />
       {cartVisible && <Cart />}
       <main>
-        <Banner />
+        {!adminLogged && <Banner />}
         <Outlet />
       </main>
       <Footer />

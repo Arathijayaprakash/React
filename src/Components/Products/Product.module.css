@@ -2,11 +2,10 @@
    display: inline-flex;
    flex-direction: row;
    text-align: center;
-   margin-left: auto;
-   margin-right: auto;
-   padding: 3rem ;
-   
-   
+   /* margin-left: auto;
+   margin-right: auto; */
+   padding: 1.5rem ;
+   justify-content: center;
   }
   
   .actions{

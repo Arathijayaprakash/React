@@ -2,6 +2,7 @@
     margin-top: 1rem;
    margin-left: 37rem;
 }
+
 .loading{
     text-align: center;
     color: rgb(45, 117, 199);
@@ -11,4 +12,10 @@
     display: block;
     align-self: center;
     padding-left: 15rem;
+}
+.home{
+    display: flex;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: flex-start;
 }

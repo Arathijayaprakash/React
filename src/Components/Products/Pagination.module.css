@@ -1,23 +1,22 @@
 .pagination{
     display: flex;
     justify-content: center;
+    text-align: center;
+   
     
 }
 .pagination li{
     list-style-type: none;
     text-decoration: none;
-    
-
 }
 
 .pagination a{
     text-decoration: none;
 }
-.pagination .page_items{
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-.pagination .page_items:hover{
-    background-color: rgb(197, 179, 194);
-    border-radius: 5px;
+
+.pagination .page_items button:active{
+    font-weight: 900;
+    border-color: black;
+    background: rgb(206, 140, 184);
+    color: black;
 }
