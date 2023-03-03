@@ -1,6 +1,6 @@
 .add{
-    margin-top: 1rem;
-   margin-left: 37rem;
+   padding: .5rem;
+   text-align: center;
 }
 
 .loading{
@@ -13,8 +13,25 @@
     align-self: center;
     padding-left: 15rem;
 }
+.dash{
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    background-image:  linear-gradient(to right, #8f2e5b, #772756);;
+}
+.dash h3{
+    color: #f1e0e8be;
+}
+.dash h2{
+    color: rgb(190, 82, 158);
+    font-weight: 600;
+}
+.chart{
+    background-image:  linear-gradient(to right, #ebdfe4, #e299c4);
+    margin-top: -50px;
+}
 .home{
     display: flex;
+    padding-top: 4rem;
     flex: 1;
     justify-content: flex-start;
     align-items: flex-start;

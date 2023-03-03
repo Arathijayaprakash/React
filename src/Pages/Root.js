@@ -21,7 +21,7 @@ const RootLayout = () => {
   return (
     <div>
       <MainNavigation />
-      <CategoryNav />
+      {!adminLogged && <CategoryNav />}
       {cartVisible && <Cart />}
       <main>
         {!adminLogged && <Banner />}

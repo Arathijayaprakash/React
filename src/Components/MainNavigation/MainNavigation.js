@@ -15,7 +15,6 @@ import { cartActions } from "../../store/cart-slice";
 import classes from "./MainNavigation.module.css";
 import CartIcon from "../Cart/CartIcon";
 
-
 export default function MainNavigation() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,7 +32,6 @@ export default function MainNavigation() {
     welcomeNote = `Welcome ${user}`;
   }
   const onLoginHandler = () => {
-   
     navigate("/login");
     dispatch(uiActions.loginShow());
     localStorage.setItem("loginVisible", loginVisible);
@@ -120,6 +118,13 @@ export default function MainNavigation() {
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
             GlammYaPP
           </Typography>
+          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
+            {/* <Button variant="" color="primary" >
+              <Add />
+              Add Prodicts
+            </Button> */}
+          </Typography>
+
           <Typography
             variant="subtitle1"
             component="div"
