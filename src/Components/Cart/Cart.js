@@ -7,7 +7,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { cartActions } from "../../store/cart-slice";
 
 const Cart = () => {
-  const cartProducts = useSelector((state) => state.cart.cartItems);
+  const cartData = useSelector((state) => state.cart);
   const cartQuantity = useSelector((state) => state.cart.cartTotalQuantity);
   const cartTotalAmount = useSelector((state) => state.cart.cartTotalAmount);
   const userLogged = useSelector((state) => state.ui.isUserlogged);
@@ -19,7 +19,8 @@ const Cart = () => {
 
   const placeOrderHandler = () => {
     const items = {
-      cartProducts: cartProducts,
+      cartProducts: cartData.cartItems,
+      user:cartData.user
     };
     fetch("https://ebeautyapp-55c72-default-rtdb.firebaseio.com/orders.json", {
       method: "POST",
@@ -36,7 +37,7 @@ const Cart = () => {
   let cart = (
     <div>
       <ul className={classes.cartItems}>
-        {cartProducts.map((item) => (
+        {cartData.cartItems.map((item) => (
           <CartItem
             key={item.id}
             item={{

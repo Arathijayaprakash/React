@@ -11,9 +11,12 @@ const ProductItem = (props) => {
   const dispatch = useDispatch();
   const userLogged = useSelector((state) => state.ui.isUserlogged);
   const adminLogged = useSelector((state) => state.ui.isAdminlogged);
+  const user = localStorage.getItem("user");
   const onAddToCartHandler = () => {
     userLogged
-      ? dispatch(cartActions.addToCart({ id, title, price, image, quantity }))
+      ? dispatch(
+          cartActions.addToCart({ id, title, price, image, quantity, user })
+        )
       : alert("Please Login...");
   };
   const onDeleteHandler = async (id) => {

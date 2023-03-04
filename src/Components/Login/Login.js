@@ -36,8 +36,10 @@ export default function Login(props) {
             if (email === data[key].email) {
               if (password === data[key].password) {
                 alert("login successfull");
+
                 navigate("../home");
                 localStorage.setItem("user", email);
+                
                 dispatch(uiActions.logoutShow());
                 dispatch(uiActions.userLog());
                 flag = true;
