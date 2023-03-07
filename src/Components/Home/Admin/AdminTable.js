@@ -79,11 +79,12 @@ const AdminTable = ({
           )}
         </TableBody>
         <Pagination
-          productsPerPage={productsPerPage}
-          totalProducts={products.length}
-          paginate={paginate}
-          currentPage={currentPage}
-        />
+        productsPerPage={productsPerPage}
+        totalProducts={products.length}
+        paginate={paginate}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
       </Table>
       <Modal open={open} onClose={handleCloseModal}>
         <ModalAddProducts />

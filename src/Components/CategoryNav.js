@@ -1,15 +1,36 @@
 import React from "react";
 import classes from "./CategoryNav.module.css";
 import { NavLink } from "react-router-dom";
+import useFetch from "./useFetch";
 
 const CategoryNav = () => {
+  const [products] = useFetch(
+    "https://ebeautyapp-55c72-default-rtdb.firebaseio.com/products.json"
+  );
+
+  const categories = products.map((product) => product.category);
+
+  const unique = Array.from(new Set(categories));
+
   return (
     <nav>
       <ul className={classes.lists}>
-        <NavLink
+        {unique.map((category) => (
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? classes.active : undefined
+            }
+            to={`/products/${category}`}
+          >
+            <li>{category}</li>
+          </NavLink>
+        ))}
+
+        {/* <NavLink
           className={({ isActive }) => (isActive ? classes.active : undefined)}
           to="/makeup"
         >
+       
           <li>MakeUp</li>
         </NavLink>
         <NavLink
@@ -23,7 +44,7 @@ const CategoryNav = () => {
           to="/hair"
         >
           <li>Hair</li>
-        </NavLink>
+        </NavLink> */}
       </ul>
     </nav>
   );

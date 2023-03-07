@@ -3,13 +3,13 @@ import HomePage from "./Pages/Home";
 import ProductListPage from "./Pages/ProductList";
 import RootLayout from "./Pages/Root";
 import Loginpage from "./Pages/Login";
-import MakeUpProducts from "./Components/Products/MakeUpProducts";
-import SkinProducts from "./Components/Products/SkinProducts";
-import HairProducts from "./Components/Products/HairProducts";
 import AdminHomePage from "./Pages/AdminHomePage";
 import PageContent from "./Components/Home/Admin/Dashboard";
 import Admin from "./Components/Home/Admin/Admin";
 import Statistics from "./Components/Home/Admin/Statistics";
+import SignUp from "./Components/SignUp/SignUp";
+import Orders from "./Components/Orders/Orders";
+import ProductCategory from "./Components/Products/ProductCategory";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,6 +20,7 @@ function App() {
         { index: true, element: <ProductListPage /> },
         { path: "products", element: <ProductListPage /> },
         { path: "login", element: <Loginpage /> },
+        { path: "signup", element: <SignUp/> },
         { path: "home", element: <HomePage /> },
         {
           path: "adminHome",
@@ -31,9 +32,9 @@ function App() {
             { path: "statistics", element: <Statistics /> },
           ],
         },
-        { path: "makeup", element: <MakeUpProducts /> },
-        { path: "skin", element: <SkinProducts /> },
-        { path: "hair", element: <HairProducts /> },
+        {path:'products/:category',element:<ProductCategory/>},
+        { path: "orders", element: <Orders/> },
+
       ],
     },
   ]);

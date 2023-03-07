@@ -11,11 +11,11 @@ const ProductItem = (props) => {
   const dispatch = useDispatch();
   const userLogged = useSelector((state) => state.ui.isUserlogged);
   const adminLogged = useSelector((state) => state.ui.isAdminlogged);
-  const user = localStorage.getItem("user");
+  const userEmail = localStorage.getItem("userEmail");
   const onAddToCartHandler = () => {
     userLogged
       ? dispatch(
-          cartActions.addToCart({ id, title, price, image, quantity, user })
+          cartActions.addToCart({ id, title, price, image, quantity, userEmail })
         )
       : alert("Please Login...");
   };

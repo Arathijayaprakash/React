@@ -1,13 +1,13 @@
 /* eslint-disable no-lone-blocks */
 import { Button } from "@mui/material";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import classes from "./Login.module.css";
 import { useDispatch } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 
 export default function Login(props) {
-  const [signupClicked, setSignupClicked] = useState(false);
+ 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -36,10 +36,9 @@ export default function Login(props) {
             if (email === data[key].email) {
               if (password === data[key].password) {
                 alert("login successfull");
-
                 navigate("../home");
-                localStorage.setItem("user", email);
-                
+                localStorage.setItem("user", data[key].fname);                
+                localStorage.setItem("userEmail", data[key].email);
                 dispatch(uiActions.logoutShow());
                 dispatch(uiActions.userLog());
                 flag = true;
@@ -56,48 +55,12 @@ export default function Login(props) {
         });
     }
   };
-  const signUpHandler = () => {
-    setSignupClicked(true);
-  };
-  const signUpFalseHandler = () => {
-    setSignupClicked(false);
-  };
-  const createUserHandler = () => {
-    const users = {
-      email: email,
-      password: password,
-    };
-    fetch("https://ebeautyapp-55c72-default-rtdb.firebaseio.com//users.json")
-      .then((response) => response.json())
-      .then((data) => {
-        for (const key in data) {
-          if (email === data[key].email) {
-            alert("User already exists");
-            break;
-          } else {
-            fetch(
-              "https://ebeautyapp-55c72-default-rtdb.firebaseio.com//users.json",
-              {
-                method: "POST",
-                body: JSON.stringify(users),
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              }
-            ).then(
-              alert("Account created successfully"),
-              setSignupClicked(false),
-              setEmail(""),
-              setPassword("")
-            );
-          }
-        }
-      });
-  };
+
+  
   return (
     <div>
       <form className={classes.form} onSubmit={authenticate}>
-        <h1>{signupClicked ? "Sign Up" : "Login"}</h1>
+        <h1>Login</h1>
         <p>
           <label>Username</label>
           <input name="email" onChange={emailHandler} required />
@@ -112,18 +75,13 @@ export default function Login(props) {
           />
         </p>
         <div className={classes.actions}>
-          {signupClicked ? (
-            <p onClick={signUpFalseHandler}>Allready have an account?</p>
-          ) : (
-            <p onClick={signUpHandler}>new to GlaMMYaPP?</p>
-          )}
-          {signupClicked ? (
-            <Button onClick={createUserHandler}>Create Account</Button>
-          ) : (
+         
+           <Link to='../signup'><p>new to GlaMMYaPP?</p></Link> 
+         
             <Button color="primary" type="submit">
               Login
             </Button>
-          )}
+          
         </div>
       </form>
     </div>

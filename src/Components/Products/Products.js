@@ -32,23 +32,12 @@ export default function Products() {
   return (
     <div>
       {productList}
-      {/* <ReactPaginate
-        previousLabel={"< previous"}
-        nextLabel={"next >"}
-        pageCount={pageCount}
-        onPageChange={paginate}
-        containerClassName={"paginationBttns"}
-        previousLinkClassName={"previousBttn"}
-        nextLinkClassName={"nextBttn"}
-        disabledClassName={"paginationDisabled"}
-        activeClassName={"paginationActive"}
-      /> */}
-
       <Pagination
         productsPerPage={productsPerPage}
         totalProducts={products.length}
         paginate={paginate}
         currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
       />
     </div>
   );

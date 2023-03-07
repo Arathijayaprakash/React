@@ -20,7 +20,7 @@ const Cart = () => {
   const placeOrderHandler = () => {
     const items = {
       cartProducts: cartData.cartItems,
-      user:cartData.user
+      user:cartData.userEmail
     };
     fetch("https://ebeautyapp-55c72-default-rtdb.firebaseio.com/orders.json", {
       method: "POST",
@@ -30,8 +30,8 @@ const Cart = () => {
       },
     }).then(alert("Order placed successfully"));
 
-    dispatch(cartActions.clearCart());
-    localStorage.setItem("cartItems", []);
+    // dispatch(cartActions.clearCart());
+    // localStorage.setItem("cartItems", []);
   };
 
   let cart = (

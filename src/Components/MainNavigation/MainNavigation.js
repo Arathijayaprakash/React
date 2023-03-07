@@ -113,6 +113,9 @@ export default function MainNavigation() {
             <Link to="hair" style={{ textDecoration: "none", color: "salmon" }}>
               <MenuItem onClick={handleClose}>Hair</MenuItem>
             </Link>
+            <Link to="orders" style={{ textDecoration: "none", color: "salmon" }}>
+              <MenuItem onClick={handleClose}>orders</MenuItem>
+            </Link>
           </Menu>
 
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>

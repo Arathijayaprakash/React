@@ -7,12 +7,13 @@ import { cartActions } from "../../store/cart-slice";
 
 const CartItem = (props) => {
   const { title, image, price, quantity, id,total } = props.item;
+  const userEmail = localStorage.getItem("userEmail");
   const dispatch=useDispatch()
   const removeFromCart=()=>{
     dispatch(cartActions.removeFromCart(id))
   }
   const addToCart=()=>{
-    dispatch(cartActions.addToCart({id,title,image,price}))
+    dispatch(cartActions.addToCart({id,title,image,price,userEmail}))
   }
   const removeItem=()=>{
     dispatch(cartActions.removeItem(id))
