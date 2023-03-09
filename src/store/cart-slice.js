@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const userEmail=localStorage.getItem("userEmail")
+const userEmail = localStorage.getItem("userEmail");
 
 const initialState = {
   userEmail: userEmail,
@@ -58,7 +58,7 @@ const cartSlice = createSlice({
       // localStorage.setItem('cartItems',JSON.stringify(state.cartItems))
     },
     clearCart(state) {
-      state.userEmail=''
+      state.userEmail = "";
       state.cartItems = [];
       state.cartTotalAmount = 0;
       state.cartTotalQuantity = 0;

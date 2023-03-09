@@ -8,7 +8,7 @@ const ProductCategory = () => {
     const params=useParams()
     const [products]=useFetch("https://ebeautyapp-55c72-default-rtdb.firebaseio.com/products.json") 
 
-    const filterdeProducts = products.filter(
+    const filterdProducts = products.filter(
       (product) => product.category === params.category
     ).map((item) => (
       <ProductItem
@@ -21,7 +21,7 @@ const ProductCategory = () => {
     ));
   return (
     <div >
-      {filterdeProducts}
+      {filterdProducts}
     </div>
   )
 }

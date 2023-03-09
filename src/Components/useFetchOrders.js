@@ -14,7 +14,10 @@ const useFetchOrders = (url) => {
           orderData.push({
             id: key,
             title:data[key].cartProducts[0].title,
+            image:data[key].cartProducts[0].image,
             user: data[key].user,
+            price:data[key].cartProducts[0].price,
+            totalPrice:data[key].cartProducts[0].totalPrice
            
           });
         }

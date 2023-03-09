@@ -1,0 +1,33 @@
+.orders{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+.orderpage{
+    justify-content: space-around;
+    text-align: center;
+    padding: 1rem;
+}
+.order a:hover {
+    transform: scale(1.02);
+    background-color: var(--color-gray-700);
+  }
+  .order:hover{
+    transform: scale(1.03);
+    background-color: var(--color-gray-700);
+  }
+.orderpage p{
+    font-weight: 800;
+}
+.order{
+   padding: 1rem;
+    justify-content: center;
+}
+
+.order p{
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.order img{
+   width: 200px;
+}

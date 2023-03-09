@@ -1,21 +1,17 @@
-import React from 'react'
-import classes from '../Products/Product.module.css'
-import { Card } from '@mui/material';
+import React from "react";
+import classes from "./Orders.module.css";
+import { Card } from "@mui/material";
 
 const OrderItems = (props) => {
-    const { user,title } = props;
-    
-  return (
-    <div className={classes.products}>
-    <ul className={classes.list}>
-      <Card sx={{ maxWidth: 300 }} className={classes.item}>
-        <h3>{user}</h3>
-        <h3>{title}</h3>
-         
-      </Card>
-    </ul>
-  </div>
-  )
-}
+  const { title, image, price} = props;
 
-export default OrderItems
+  return (
+    <Card sx={{ maxWidth: 300 }} className={classes.order}>
+      <p>{title}</p>
+      <img src={image} alt={image} />
+      <p>₹{price}</p>
+    </Card>
+  );
+};
+
+export default OrderItems;

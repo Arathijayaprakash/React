@@ -14,6 +14,7 @@ import { uiActions } from "../../store/ui-slice";
 import { cartActions } from "../../store/cart-slice";
 import classes from "./MainNavigation.module.css";
 import CartIcon from "../Cart/CartIcon";
+import useFetch from "../useFetch";
 
 export default function MainNavigation() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ export default function MainNavigation() {
     navigate("../");
     dispatch(uiActions.loginShow());
     localStorage.setItem("loginVisible", loginVisible);
+    localStorage.removeItem('adminLogged')
     welcomeNote = "";
     {
       userLogged && dispatch(uiActions.userLog());
@@ -63,6 +65,13 @@ export default function MainNavigation() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const [products] = useFetch(
+    "https://ebeautyapp-55c72-default-rtdb.firebaseio.com/products.json"
+  );
+
+  const categories = products.map((product) => product.category);
+
+  const unique = Array.from(new Set(categories));
 
   return (
     <Box sx={{ flexGrow: 1 }} position="fixed">
@@ -95,26 +104,28 @@ export default function MainNavigation() {
                 <MenuItem onClick={handleClose}>Home</MenuItem>
               </Link>
             )}
+
             <Link
               to="products"
               style={{ textDecoration: "none", color: "salmon" }}
             >
               <MenuItem onClick={handleClose}>All Products</MenuItem>
             </Link>
+
+            {unique.map((category) => (
+              <Link
+                to={`/products/${category}`}
+                style={{ textDecoration: "none", color: "salmon" }}
+              >
+                <MenuItem onClick={handleClose}>{category}</MenuItem>
+              </Link>
+            ))}
+
             <Link
-              to="makeup"
+              to="orders"
               style={{ textDecoration: "none", color: "salmon" }}
             >
-              <MenuItem onClick={handleClose}>MakeUp</MenuItem>
-            </Link>
-            <Link to="skin" style={{ textDecoration: "none", color: "salmon" }}>
-              <MenuItem onClick={handleClose}>Skin</MenuItem>
-            </Link>
-            <Link to="hair" style={{ textDecoration: "none", color: "salmon" }}>
-              <MenuItem onClick={handleClose}>Hair</MenuItem>
-            </Link>
-            <Link to="orders" style={{ textDecoration: "none", color: "salmon" }}>
-              <MenuItem onClick={handleClose}>orders</MenuItem>
+              <MenuItem onClick={handleClose}>Your Orders</MenuItem>
             </Link>
           </Menu>
 
@@ -122,10 +133,7 @@ export default function MainNavigation() {
             GlammYaPP
           </Typography>
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            {/* <Button variant="" color="primary" >
-              <Add />
-              Add Prodicts
-            </Button> */}
+            
           </Typography>
 
           <Typography
@@ -138,7 +146,7 @@ export default function MainNavigation() {
 
           {cartIconVisible && <CartIcon />}
 
-          {loginVisible ? (
+          {loginVisible && !adminLogged ? (
             <Button color="inherit" onClick={onLoginHandler}>
               Login
             </Button>

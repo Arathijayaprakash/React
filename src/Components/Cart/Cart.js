@@ -30,7 +30,7 @@ const Cart = () => {
       },
     }).then(alert("Order placed successfully"));
 
-    // dispatch(cartActions.clearCart());
+    dispatch(cartActions.clearCart());
     // localStorage.setItem("cartItems", []);
   };
 

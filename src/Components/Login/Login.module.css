@@ -10,6 +10,16 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
   }
+  .error{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(197, 9, 9);
+  }
+  .invalid{
+    border: 2px solid #b40e0e;
+    background-color: rgb(248, 183, 209);
+  }
+
+  
   .form h1{
     text-align: center;
     margin-top: 0px;
@@ -57,6 +67,15 @@
     font-weight: bolder;
 
   }
+  .actions Button:disabled,
+  .actions Button:disabled:hover,
+  .actions Button:disabled:active{
+    background-color: #ccc;
+    color: #292929;
+    border-color: #ccc;
+    cursor: not-allowed;
+  }
+  
   
   .actions a {
     text-decoration: none;
