@@ -10,7 +10,7 @@ import Statistics from "./Components/Home/Admin/Statistics";
 import SignUp from "./Components/SignUp/SignUp";
 import Orders from "./Components/Orders/Orders";
 import ProductCategory from "./Components/Products/ProductCategory";
-import { checkAdminAuthLoader } from "./Auth/auth";
+import { checkAdminAuthLoader, checkUserAuthLoader } from "./Auth/auth";
 
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
           ],
         },
         { path: "products/:category", element: <ProductCategory /> },
-        { path: "orders", element: <Orders /> },
+        { path: "orders", element: <Orders />,loader:checkUserAuthLoader },
       ],
     },
   ]);

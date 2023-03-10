@@ -16,6 +16,7 @@ const ProductItem = (props) => {
     userLogged
       ? dispatch(
           cartActions.addToCart({ id, title, price, image, quantity, userEmail })
+          
         )
       : alert("Please Login...");
   };

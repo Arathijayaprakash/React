@@ -8,6 +8,7 @@ const Orders = () => {
   const [orders] = useFetchOrders(
     "https://ebeautyapp-55c72-default-rtdb.firebaseio.com/orders.json"
   );
+
   const user = orders.filter((order) => order.user === userEmail);
   
   let userOrder = user.map((item) => (
@@ -16,6 +17,7 @@ const Orders = () => {
       title={item.title}
       image={item.image}
       price={item.price}
+      quantity={item.quantity}
       totalPrice={item.totalPrice}
     />
   ));

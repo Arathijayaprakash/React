@@ -40,21 +40,21 @@ export default function Login(props) {
             if (email === data[key].email) {
               if (password === data[key].password) {
                 alert("login successfull");
+                localStorage.setItem("userLogged", true);
+                dispatch(uiActions.logoutShow());
+                dispatch(uiActions.userLog());
                 navigate("../home");
                 localStorage.setItem("user", data[key].fname);
                 localStorage.setItem("userEmail", data[key].email);
-                dispatch(uiActions.logoutShow());
-                dispatch(uiActions.userLog());
                 flag = true;
                 break;
-              } else {
-                alert("Password is incorrect");
-                break;
-              }
+              } 
             }
           }
           if (!flag) {
-            alert("User does not exist");
+            alert("Enter Valid username or password");
+            setEmail('')
+            setPassword('')
           }
         });
     }

@@ -9,15 +9,27 @@ import Footer from "../Components/Footer";
 
 const RootLayout = () => {
   const cartVisible = useSelector((state) => state.ui.cartVisible);
-  const cart = useSelector((state) => state.cart);
+  const userEmail = useSelector((state) => state.cart.userEmail);
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartTotalQuantity = useSelector(
+    (state) => state.cart.cartTotalQuantity
+  );
+  const cartTotalAmount = useSelector((state) => state.cart.cartTotalAmount);
   const adminLogged = useSelector((state) => state.ui.isAdminlogged);
 
   useEffect(() => {
+    const cart = {
+      userEmail: localStorage.getItem('userEmail'),
+      cartItems: cartItems,
+      cartTotalQuantity: cartTotalQuantity,
+      cartTotalAmount: cartTotalAmount,
+    };
     fetch("https://ebeautyapp-55c72-default-rtdb.firebaseio.com/cart.json", {
       method: "PUT",
       body: JSON.stringify(cart),
     });
-  }, [cart]);
+  }, [userEmail, cartItems, cartTotalAmount, cartTotalQuantity]);
+  
   return (
     <div>
       <MainNavigation />

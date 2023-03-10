@@ -13,14 +13,14 @@ const Cart = () => {
   const userLogged = useSelector((state) => state.ui.isUserlogged);
 
   const dispatch = useDispatch();
-  const clearCartHandler=()=>{
-    dispatch(cartActions.clearCart())
-  }
+  const clearCartHandler = () => {
+    dispatch(cartActions.clearCart());
+  };
 
   const placeOrderHandler = () => {
     const items = {
       cartProducts: cartData.cartItems,
-      user:cartData.userEmail
+      user: localStorage.getItem("userEmail"),
     };
     fetch("https://ebeautyapp-55c72-default-rtdb.firebaseio.com/orders.json", {
       method: "POST",
@@ -62,7 +62,7 @@ const Cart = () => {
           {userLogged ? (
             <Button
               variant="contained"
-              style={{ backgroundColor: "#b82b6c",marginLeft:'10px' }}
+              style={{ backgroundColor: "#b82b6c", marginLeft: "10px" }}
               onClick={placeOrderHandler}
             >
               PLACE ORDER

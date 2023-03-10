@@ -1,16 +1,15 @@
 import * as React from "react";
 import { TextField, Button } from "@mui/material";
-import { v4 as uuid } from 'uuid';
-
+import { v4 as uuid } from "uuid";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 const ModalAddProducts = (props) => {
-  
   const [title, setTitle] = React.useState("");
   const [price, setPrice] = React.useState("");
   const [category, setCategory] = React.useState("");
   const [image, setImage] = React.useState("");
   const unique_id = uuid();
-  const small_id = unique_id.slice(0,8)
+  const small_id = unique_id.slice(0, 8);
   const onSetTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -23,11 +22,11 @@ const ModalAddProducts = (props) => {
   const onSetImage = (e) => {
     setImage(e.target.value);
   };
-  const id={small_id}
+  const id = { small_id };
   async function onSubmitHandler(e) {
     e.preventDefault();
     const products = {
-      id:id,
+      id: id,
       title: title,
       price: price,
       category: category,
@@ -43,13 +42,11 @@ const ModalAddProducts = (props) => {
         },
       }
     );
-   
-      const data= response.json()
-      alert("Product Added SuccessFully")
-      
-      console.log(data)
-    
-   
+
+    const data = response.json();
+    alert("Product Added SuccessFully");
+
+    console.log(data);
   }
   return (
     <div
@@ -75,7 +72,10 @@ const ModalAddProducts = (props) => {
           required
           defaultValue={props.title}
         />
-        <TextField
+        
+        
+          
+          <TextField
           id="standard-full-width"
           label="Add Product Price"
           style={{ margin: 8 }}
@@ -85,16 +85,24 @@ const ModalAddProducts = (props) => {
           required
           defaultValue={props.price}
         />
-        <TextField
-          id="standard-full-width"
-          label="Add Product Category"
-          style={{ margin: 8 }}
-          onChange={onSetCategory}
-          placeholder="Enter Product Category"
-          fullWidth
-          required
-          defaultValue={props.category}
-        />
+        
+
+        <FormControl fullWidth style={{ margin: 8 } }>
+          <InputLabel  required>
+            Add Product Category
+          </InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            value={category}
+            label="Add Product Category"
+            onChange={onSetCategory}
+          >
+            <MenuItem value="MakeUp">MakeUp</MenuItem>
+            <MenuItem value="Skin">Skin</MenuItem>
+            <MenuItem value="Hair">Hair</MenuItem>
+          </Select>
+        </FormControl>
         <TextField
           id="standard-full-width"
           label="Add URL of Product Image"
@@ -111,7 +119,6 @@ const ModalAddProducts = (props) => {
           type="submit"
           variant="contained"
           color="primary"
-         
         >
           Save
         </Button>

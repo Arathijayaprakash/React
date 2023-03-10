@@ -41,7 +41,8 @@ export default function MainNavigation() {
     navigate("../");
     dispatch(uiActions.loginShow());
     localStorage.setItem("loginVisible", loginVisible);
-    localStorage.removeItem('adminLogged')
+    localStorage.removeItem("adminLogged");
+    localStorage.removeItem("userLogged");
     welcomeNote = "";
     {
       userLogged && dispatch(uiActions.userLog());
@@ -132,9 +133,11 @@ export default function MainNavigation() {
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
             GlammYaPP
           </Typography>
-          <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            
-          </Typography>
+          <Typography
+            variant="h5"
+            component="div"
+            sx={{ flexGrow: 1 }}
+          ></Typography>
 
           <Typography
             variant="subtitle1"
