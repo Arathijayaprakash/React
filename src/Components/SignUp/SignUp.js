@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import classes from "../Login/Login.module.css";
 import { Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
+import validator from "validator";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const SignUp = () => {
   const lnameIsValid = inputs.lname.trim() !== "";
   const lnameIsInvalid = lnameIsTouched && !lnameIsValid;
 
-  const mobileIsValid = inputs.mobile.trim().length === 10;
+  const mobileIsValid = validator.isMobilePhone(inputs.mobile);
   const mobileIsInvalid = mobileIsTouched && !mobileIsValid;
 
   const hnameIsValid = inputs.hname.trim().length >= 3;
@@ -53,19 +54,25 @@ const SignUp = () => {
   const distIsValid = inputs.dist.trim().length >= 3;
   const distIsInvalid = distIsTouched && !distIsValid;
 
-  const emailIsValid = inputs.email.includes('@') ;
+  const emailIsValid = validator.isEmail(inputs.email);
   const emailIsInvalid = emailIsTouched && !emailIsValid;
 
-  const pinIsValid = inputs.pin.trim().length >= 3;
+  const pinIsValid = validator.isMobilePhone(inputs.pin);
   const pinIsInvalid = pinIsTouched && !pinIsValid;
 
   const placeIsValid = inputs.place.trim().length >= 3;
   const placeIsInvalid = placeIsTouched && !placeIsValid;
 
-  const passwordIsValid = inputs.password.trim().length >= 6;
+  const passwordIsValid = validator.isStrongPassword(inputs.password, {
+    minLength: 8,
+    minLowercase: 1,
+    minUppercase: 1,
+    minNumbers: 1,
+    minSymbols: 1,
+  });
   const passwordIsInvalid = passwordIsTouched && !passwordIsValid;
 
-  const cpasswordIsValid = inputs.cpassword===inputs.password;
+  const cpasswordIsValid = inputs.cpassword === inputs.password;
   const cpasswordIsInvalid = cpasswordIsTouched && !cpasswordIsValid;
 
   const stateIsValid = inputs.state.trim().length >= 3;
@@ -261,7 +268,7 @@ const SignUp = () => {
               onBlur={onlnameBlurHandler}
             />
             <span className={classes.error}>
-              {lnameIsInvalid && <p>Please enter last name</p>}
+              {lnameIsInvalid && <p>last name should not be empty</p>}
             </span>
           </p>
         </div>
@@ -275,7 +282,7 @@ const SignUp = () => {
             onBlur={onMobileBlurHandler}
           />
           <span className={classes.error}>
-            {mobileIsInvalid && <p>Mobile number should contain 10 numbers</p>}
+            {mobileIsInvalid && <p>enter valid mobile number</p>}
           </span>
         </p>
         <div className={classes.name}>
@@ -288,8 +295,8 @@ const SignUp = () => {
               onBlur={onHnameBlurHandler}
             />
             <span className={classes.error}>
-            {hnameIsInvalid && <p>Enter valid housename</p>}
-          </span>
+              {hnameIsInvalid && <p>Enter valid housename</p>}
+            </span>
           </p>
           <p>
             <label>Place</label>
@@ -300,8 +307,8 @@ const SignUp = () => {
               onBlur={onPlaceBlurHandler}
             />
             <span className={classes.error}>
-            {placeIsInvalid && <p>enter valid place</p>}
-          </span>
+              {placeIsInvalid && <p>enter valid place</p>}
+            </span>
           </p>
         </div>
         <div className={classes.name}>
@@ -314,8 +321,8 @@ const SignUp = () => {
               onBlur={onCityBlurHandler}
             />
             <span className={classes.error}>
-            {cityIsInvalid && <p>enter valid place</p>}
-          </span>
+              {cityIsInvalid && <p>enter valid place</p>}
+            </span>
           </p>
           <p>
             <label>District</label>
@@ -326,8 +333,8 @@ const SignUp = () => {
               onBlur={onDistBlurHandler}
             />
             <span className={classes.error}>
-            {distIsInvalid && <p>enter valid district</p>}
-          </span>
+              {distIsInvalid && <p>enter valid district</p>}
+            </span>
           </p>
           <p>
             <label>State</label>
@@ -338,8 +345,8 @@ const SignUp = () => {
               onBlur={onStateBlurHandler}
             />
             <span className={classes.error}>
-            {stateIsInvalid && <p>enter valid state</p>}
-          </span>
+              {stateIsInvalid && <p>enter valid state</p>}
+            </span>
           </p>
         </div>
 
@@ -352,7 +359,7 @@ const SignUp = () => {
             onBlur={onPinBlurHandler}
           />
           <span className={classes.error}>
-            {pinIsInvalid && <p>enter valid place</p>}
+            {pinIsInvalid && <p>enter valid pincode</p>}
           </span>
         </p>
         <p>
@@ -378,8 +385,12 @@ const SignUp = () => {
               onBlur={onPasswordBlurHandler}
             />
             <span className={classes.error}>
-            {passwordIsInvalid && <p>password number should atleast 6 characters</p>}
-          </span>
+              {passwordIsInvalid && (
+                <p>
+                  enter valid password
+                </p>
+              )}
+            </span>
           </p>
           <p>
             <label>Confirm Password</label>
@@ -391,10 +402,18 @@ const SignUp = () => {
               onBlur={onCpasswordBlurHandler}
             />
             <span className={classes.error}>
-            {cpasswordIsInvalid && <p>password is not correct</p>}
-          </span>
+              {cpasswordIsInvalid && <p>password is not correct</p>}
+            </span>
           </p>
         </div>
+        <span className={classes.error}>
+          {passwordIsInvalid && (
+            <p>
+              password should contain minLength-8, minLowercase-1,
+              minUppercase-1, minNumbers-1, minSymbols-1
+            </p>
+          )}
+        </span>
         <div className={classes.actions}>
           <Link to="../login">
             <p>Allready have an account?</p>
