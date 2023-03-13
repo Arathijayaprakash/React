@@ -3,12 +3,13 @@ import { Button } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import classes from "./Login.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 
 
 export default function Login(props) {
  
+  const loginVisible = useSelector((state) => state.ui.loginVisible);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -25,6 +26,7 @@ export default function Login(props) {
     if (email === "admin@gmail.com" && password === "admin") {
       alert("login successfull");
       localStorage.setItem('adminLogged',true)
+      {loginVisible && dispatch(uiActions.loginShow());}
       dispatch(uiActions.logoutShow());
       dispatch(uiActions.cartIconShown());
       dispatch(uiActions.adminLog());
@@ -41,6 +43,7 @@ export default function Login(props) {
               if (password === data[key].password) {
                 alert("login successfull");
                 localStorage.setItem("userLogged", true);
+                {loginVisible && dispatch(uiActions.loginShow());}
                 dispatch(uiActions.logoutShow());
                 dispatch(uiActions.userLog());
                 navigate("../home");

@@ -10,8 +10,7 @@ import Statistics from "./Components/Home/Admin/Statistics";
 import SignUp from "./Components/SignUp/SignUp";
 import Orders from "./Components/Orders/Orders";
 import ProductCategory from "./Components/Products/ProductCategory";
-import { checkAdminAuthLoader, checkUserAuthLoader } from "./Auth/auth";
-
+import { CheckAdminAuthLoader, CheckUserAuthLoader } from "./Auth/auth";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,11 +22,11 @@ function App() {
         { path: "products", element: <ProductListPage /> },
         { path: "login", element: <Loginpage /> },
         { path: "signup", element: <SignUp /> },
-        { path: "home", element: <HomePage /> },
+        { path: "home", element: <HomePage />, loader: CheckUserAuthLoader },
         {
           path: "adminHome",
           element: <AdminHomePage />,
-          loader:checkAdminAuthLoader,
+          loader: CheckAdminAuthLoader,
           children: [
             { index: true, element: <PageContent /> },
             { path: "products", element: <ProductListPage /> },
@@ -36,7 +35,7 @@ function App() {
           ],
         },
         { path: "products/:category", element: <ProductCategory /> },
-        { path: "orders", element: <Orders />,loader:checkUserAuthLoader },
+        { path: "orders", element: <Orders />, loader: CheckUserAuthLoader },
       ],
     },
   ]);
