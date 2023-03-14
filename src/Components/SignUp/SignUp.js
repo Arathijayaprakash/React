@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import validator from "validator";
 import ClearIcon from '@mui/icons-material/Clear';
-import CheckIcon from '@mui/icons-material/Check';
+
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -404,7 +404,7 @@ const SignUp = () => {
               onBlur={onCpasswordBlurHandler}
             />
             <span className={classes.error}>
-              {cpasswordIsInvalid ? <p><ClearIcon/></p>:<p className={classes.success}><CheckIcon/></p>}
+              {cpasswordIsInvalid && <p><ClearIcon/></p>}
             </span>
           </p>
         </div>

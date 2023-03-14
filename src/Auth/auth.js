@@ -1,4 +1,4 @@
-import { redirect } from "react-router-dom";
+import { Outlet, redirect } from "react-router-dom";
 
 export const getAdminAuth = () => {
   const adminAuth = localStorage.getItem("adminLogged");
@@ -10,15 +10,9 @@ export const getUserAuth = () => {
 };
 export const CheckAdminAuthLoader = () => {
   const adminAuth = getAdminAuth();
-  if (!adminAuth) {
-    return redirect("/login");
-  }
-  return null;
+  return adminAuth ? <Outlet /> : redirect("/login");
 };
 export function CheckUserAuthLoader() {
   const userAuth = getUserAuth();
-  if (!userAuth) {
-    return redirect("/login");
-  }
-  return null;
+  return userAuth ? <Outlet /> : redirect("/login");
 }

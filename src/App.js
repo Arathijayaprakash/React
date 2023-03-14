@@ -22,20 +22,38 @@ function App() {
         { path: "products", element: <ProductListPage /> },
         { path: "login", element: <Loginpage /> },
         { path: "signup", element: <SignUp /> },
-        { path: "home", element: <HomePage />, loader: CheckUserAuthLoader },
         {
-          path: "adminHome",
-          element: <AdminHomePage />,
-          loader: CheckAdminAuthLoader,
+          element: <CheckUserAuthLoader />,
+          children: [{ path: "home", element: <HomePage /> }],
+        },
+        {
+          element: <CheckAdminAuthLoader />,
           children: [
-            { index: true, element: <PageContent /> },
-            { path: "products", element: <ProductListPage /> },
-            { path: "admintable", element: <Admin /> },
-            { path: "statistics", element: <Statistics /> },
+            {
+              path: "adminHome",
+              element: <AdminHomePage />,
+              loader: CheckAdminAuthLoader,
+              children: [
+                { index: true, element: <PageContent /> },
+                { path: "products", element: <ProductListPage /> },
+                { path: "admintable", element: <Admin /> },
+                { path: "statistics", element: <Statistics /> },
+              ],
+            },
           ],
         },
+
         { path: "products/:category", element: <ProductCategory /> },
-        { path: "orders", element: <Orders />, loader: CheckUserAuthLoader },
+        {
+          element: <CheckUserAuthLoader />,
+          children: [
+            {
+              path: "orders",
+              element: <Orders />,
+              loader: CheckUserAuthLoader,
+            },
+          ],
+        },
       ],
     },
   ]);

@@ -14,7 +14,7 @@ describe('Category nav',()=>{
             </BrowserRouter>
           </Provider>
         );
-        const linkElement = screen.getByText(/skin/i);
+        const linkElement = screen.getByText(/Skin/i);
         expect(linkElement).toBeInTheDocument();
       })
       test("renders hair in category nav", () => {
@@ -25,7 +25,7 @@ describe('Category nav',()=>{
             </BrowserRouter>
           </Provider>
         );
-        const linkElement = screen.getByText(/hair/i);
+        const linkElement = screen.getByText(/Hair/i);
         expect(linkElement).toBeInTheDocument();
       })
       test("renders makeup in category nav", () => {
@@ -36,7 +36,7 @@ describe('Category nav',()=>{
             </BrowserRouter>
           </Provider>
         );
-        const linkElement = screen.getByText(/makeup/i);
+        const linkElement = screen.getByText(/MakeUp/i);
         expect(linkElement).toBeInTheDocument();
       })
 })

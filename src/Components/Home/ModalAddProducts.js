@@ -23,7 +23,7 @@ const ModalAddProducts = (props) => {
     setImage(e.target.value);
   };
   const id = { small_id };
-  async function onSubmitHandler(e) {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
     const products = {
       id: id,
@@ -32,22 +32,20 @@ const ModalAddProducts = (props) => {
       category: category,
       image: image,
     };
-    const response = fetch(
+    const response = await fetch(
       "https://ebeautyapp-55c72-default-rtdb.firebaseio.com//products.json",
       {
         method: "POST",
-        body: JSON.stringify(products),
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify(products),
       }
     );
-
-    const data = response.json();
-    alert("Product Added SuccessFully");
-
+    const data = await response.json();
     console.log(data);
-  }
+    alert("Product added successfully");
+  };
   return (
     <div
       style={{
@@ -72,10 +70,8 @@ const ModalAddProducts = (props) => {
           required
           defaultValue={props.title}
         />
-        
-        
-          
-          <TextField
+
+        <TextField
           id="standard-full-width"
           label="Add Product Price"
           style={{ margin: 8 }}
@@ -85,12 +81,9 @@ const ModalAddProducts = (props) => {
           required
           defaultValue={props.price}
         />
-        
 
-        <FormControl fullWidth style={{ margin: 8 } }>
-          <InputLabel  required>
-            Add Product Category
-          </InputLabel>
+        <FormControl fullWidth style={{ margin: 8 }}>
+          <InputLabel required>Add Product Category</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"

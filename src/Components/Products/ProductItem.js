@@ -4,7 +4,7 @@ import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import { cartActions } from "../../store/cart-slice";
 import { useSelector, useDispatch } from "react-redux";
-import { redirect } from "react-router-dom";
+
 
 const ProductItem = (props) => {
   const { id, title, price, image, quantity } = props;
@@ -24,15 +24,14 @@ const ProductItem = (props) => {
     const proceed = window.confirm("Are you sure?");
 
     if (proceed) {
-      const response = fetch(
+      const response =await fetch(
         `https://ebeautyapp-55c72-default-rtdb.firebaseio.com/products/${id}.json`,
         { method: "DELETE" }
       );
-      if (!response.ok) {
-        console.log("Error while deleting");
-      }
-
-      return redirect("/adminHome");
+      const data=await response.json()
+      console.log(data)
+      alert('Product Deleted successfully')
+      
     }
   };
   return (
