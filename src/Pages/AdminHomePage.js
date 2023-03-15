@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminHome from '../Components/Home/Admin/AdminHome'
+import AdminHome from '../Components/Admin/AdminHome'
 
 const AdminHomePage = () => {
   return (

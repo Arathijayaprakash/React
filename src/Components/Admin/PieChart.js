@@ -1,6 +1,6 @@
 import React from "react";
 import { Pie, PieChart, Cell, Legend } from "recharts";
-import useFetch from "../../useFetch";
+import useFetch from "../useFetch";
 
 const StatisticChart = () => {
   const [products] = useFetch(

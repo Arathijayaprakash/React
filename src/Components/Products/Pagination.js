@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Button } from "@mui/material";
 import React from "react";
-import './Pagination.css'
+import "./Pagination.css";
 
 const Pagination = ({
   productsPerPage,
@@ -26,11 +26,13 @@ const Pagination = ({
         <Button
           onClick={goToPreviousPage}
           className={`prev ${currentPage === 1 ? "disabled" : ""}`}
-               >
+          key="prev"
+        >
           prev
         </Button>
         {pageNumbers.map((number) => (
           <Button
+            key={number}
             onClick={() => paginate(number)}
             className={`paginationItem ${
               currentPage === number ? "active" : null
@@ -41,7 +43,10 @@ const Pagination = ({
         ))}
         <Button
           onClick={goToNextPage}
-          className={`next ${currentPage === pageNumbers.length ? "disabled" : ""}`}
+          className={`next ${
+            currentPage === pageNumbers.length ? "disabled" : ""
+          }`}
+          key="next"
         >
           next
         </Button>

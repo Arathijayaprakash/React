@@ -8,8 +8,7 @@ const AdminHome = () => {
   return (
     <div className={classes.home}>
       <SideMenu/>
-      <Outlet/>
-      
+      <Outlet/>     
     </div>
   )
 }

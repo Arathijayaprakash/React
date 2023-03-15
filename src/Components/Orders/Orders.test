@@ -1,0 +1,62 @@
+import React from "react";
+import { render,screen } from "@testing-library/react";
+import Orders from "./Orders";
+import { Provider } from "react-redux";
+import store from "../../store";
+import { BrowserRouter } from "react-router-dom";
+
+jest.mock("../useFetchOrders", () => {
+  return jest.fn(() => {
+    return [
+      [
+        {
+          user: "user1",
+          title: "product1",
+          image: "image1.png",
+          price: 10,
+          quantity: 1,
+          totalPrice: 10,
+        },
+        {
+          user: "user1",
+          title: "product2",
+          image: "image2.png",
+          price: 15,
+          quantity: 2,
+          totalPrice: 30,
+        },
+        {
+          user: "user2",
+          title: "product3",
+          image: "image3.png",
+          price: 20,
+          quantity: 1,
+          totalPrice: 20,
+        },
+      ],
+    ];
+  });
+});
+
+describe("Orders", () => {
+  beforeEach(() => {
+    localStorage.setItem("userEmail", "user1");
+  });
+
+  afterEach(() => {
+    localStorage.clear();
+  });
+
+  test("renders message when user has no orders", async() => {
+   
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Orders />
+        </BrowserRouter>
+      </Provider>
+    );
+    const noOrdersText = await screen.findByText(/You have no orders yet/i);
+  expect(noOrdersText).toBeInTheDocument();
+  });
+});

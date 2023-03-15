@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./CategoryNav.module.css";
-import { NavLink } from "react-router-dom";
-import useFetch from "./useFetch";
+import {Link } from "react-router-dom";
+import useFetch from "../useFetch";
 
 const CategoryNav = () => {
   const [products] = useFetch(
@@ -16,16 +16,10 @@ const CategoryNav = () => {
     <nav>
       <ul className={classes.lists}>
         {unique.map((category) => (
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? classes.active : undefined
-            }
-            to={`/products/${category}`}
-          >
+          <Link to={`/products/${category}`}>
             <li>{category}</li>
-          </NavLink>
+          </Link>
         ))}
-
       </ul>
     </nav>
   );

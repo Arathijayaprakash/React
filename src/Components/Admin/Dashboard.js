@@ -7,7 +7,7 @@ import { Space, Typography } from "antd";
 import React from "react";
 import DashboardCard from "./DashboardCard";
 import StatisticChart from "./PieChart";
-import useFetch from "../../useFetch";
+import useFetch from "../useFetch";
 import classes from "./Admin.module.css";
 
 

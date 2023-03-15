@@ -5,15 +5,18 @@ import classes from "./Orders.module.css";
 
 const Orders = () => {
   const userEmail = localStorage.getItem("userEmail");
-  const [orders] = useFetchOrders(
+  const orders = useFetchOrders(
     "https://ebeautyapp-55c72-default-rtdb.firebaseio.com/orders.json"
   );
 
+  if (!orders) {
+    return <div>Loading...</div>;
+  }
   const user = orders.filter((order) => order.user === userEmail);
   const totalPrices = user.map((item) => item.totalPrice);
-  const orderTotal=totalPrices.reduce((sum,price)=>{
-    return +sum + +price
-  },0)
+  const orderTotal = totalPrices.reduce((sum, price) => {
+    return +sum + +price;
+  }, 0);
 
   let userOrder = (
     <div>
@@ -39,7 +42,7 @@ const Orders = () => {
     <div className={classes.orderpage}>
       {" "}
       <h2>Your Orders</h2>
-      <div className={classes.orders}>{userOrder}</div>
+      <div>{userOrder}</div>
     </div>
   );
 };

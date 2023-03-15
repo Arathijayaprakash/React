@@ -7,9 +7,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button, Modal } from "@mui/material";
-import ModalAddProducts from "../ModalAddProducts";
+import ModalAddProducts from "./ModalAddProducts";
 import classes from "./Admin.module.css";
-import Pagination from "../../Products/Pagination";
+import Pagination from "../Products/Pagination";
 
 const AdminTable = ({
   handleOpenModal,

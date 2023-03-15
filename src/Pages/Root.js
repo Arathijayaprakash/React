@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import CategoryNav from "../Components/CategoryNav";
+import CategoryNav from "../Components/CategoryNav/CategoryNav";
 import MainNavigation from "../Components/MainNavigation/MainNavigation";
 import { useSelector } from "react-redux";
 import Cart from "../Components/Cart/Cart";
