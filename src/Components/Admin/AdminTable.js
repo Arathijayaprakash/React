@@ -8,10 +8,15 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button, Modal } from "@mui/material";
 import ModalAddProducts from "./ModalAddProducts";
+import ModalEditProducts from "./ModalEditProducts";
 import classes from "./Admin.module.css";
 import Pagination from "../Products/Pagination";
+import { DeleteForeverSharp, Edit } from "@mui/icons-material";
+import { useState } from "react";
 
 const AdminTable = ({
+  handleCloseEditModal,
+  handleOpenEditModal,
   handleOpenModal,
   isLoading,
   currentProducts,
@@ -21,8 +26,14 @@ const AdminTable = ({
   setCurrentPage,
   currentPage,
   open,
-  handleCloseModal
+  openEdit,
+  handleCloseModal,
 }) => {
+  const [editProductId, setEditProductId] = useState("");
+  const onEditHandler = (productId) => {
+    setEditProductId(productId);
+    handleOpenEditModal();
+  };
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
     <TableContainer component={Paper}>
@@ -34,7 +45,7 @@ const AdminTable = ({
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>Id</TableCell>
+            <TableCell>Id </TableCell>
             <TableCell align="right">Image</TableCell>
             <TableCell align="right">Product</TableCell>
             <TableCell align="right">Price</TableCell>
@@ -71,7 +82,13 @@ const AdminTable = ({
                     color="error"
                     onClick={() => onDeleteHandler(product.id)}
                   >
-                    Delete
+                    <DeleteForeverSharp />
+                  </Button>
+                  <Button
+                    color="inherit"
+                    onClick={() => onEditHandler(product.id)}
+                  >
+                    <Edit />
                   </Button>
                 </TableCell>
               </TableRow>
@@ -79,15 +96,22 @@ const AdminTable = ({
           )}
         </TableBody>
         <Pagination
-        productsPerPage={productsPerPage}
-        totalProducts={products.length}
-        paginate={paginate}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
+          productsPerPage={productsPerPage}
+          totalProducts={products.length}
+          paginate={paginate}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </Table>
       <Modal open={open} onClose={handleCloseModal}>
         <ModalAddProducts />
+      </Modal>
+      <Modal open={openEdit} onClose={handleCloseEditModal}>
+        <ModalEditProducts handleCloseEditModal={handleCloseEditModal}
+          theProducts={currentProducts.find(
+            (product) => product.id === editProductId
+          )}
+        />
       </Modal>
     </TableContainer>
   );

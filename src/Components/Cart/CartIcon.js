@@ -4,6 +4,7 @@ import classes from "./CartIcon.module.css";
 import { useSelector,useDispatch } from "react-redux";
 import { uiActions } from "../../store/ui-slice";
 
+
 const CartIcon = () => {
   const cartQuantity = useSelector((state) => state.cart.cartTotalQuantity);
   const dispatch=useDispatch()

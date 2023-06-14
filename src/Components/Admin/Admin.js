@@ -49,6 +49,20 @@ const Admin = () => {
     }
   };
 
+  const [openEdit,setOpenEdit]=React.useState(false)
+  const handleOpenEditModal=()=>{
+    setOpenEdit(true)
+  }
+  const handleCloseEditModal=()=>{
+    setOpenEdit(false)
+  }
+
+  const onEditHandler=async(id)=>{
+    
+    handleOpenEditModal()
+   
+  }
+
   const [open, setOpen] = React.useState(false);
   const handleOpenModal = () => {
     setOpen(true);
@@ -68,7 +82,11 @@ const Admin = () => {
       <AdminTable
         isLoading={isLoading}
         onDeleteHandler={onDeleteHandler}
+        onEditHandler={onEditHandler}
         open={open}
+        openEdit={openEdit}
+        handleOpenEditModal={handleOpenEditModal}
+        handleCloseEditModal={handleCloseEditModal}
         handleOpenModal={handleOpenModal}
         handleCloseModal={handleCloseModal}
         currentProducts={currentProducts}

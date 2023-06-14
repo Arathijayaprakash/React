@@ -185,6 +185,7 @@ const SignUp = () => {
             break;
           }
         }
+        
         if (!flag) {
           fetch(
             "https://ebeautyapp-55c72-default-rtdb.firebaseio.com//users.json",
