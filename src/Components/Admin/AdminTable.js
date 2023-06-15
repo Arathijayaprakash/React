@@ -104,7 +104,7 @@ const AdminTable = ({
         />
       </Table>
       <Modal open={open} onClose={handleCloseModal}>
-        <ModalAddProducts />
+        <ModalAddProducts handleCloseModal={handleCloseModal} />
       </Modal>
       <Modal open={openEdit} onClose={handleCloseEditModal}>
         <ModalEditProducts handleCloseEditModal={handleCloseEditModal}

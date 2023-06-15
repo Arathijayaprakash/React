@@ -39,6 +39,7 @@ const ProductItem = (props) => {
       const data = await response.json();
       console.log(data);
       alert("Product Deleted successfully");
+      window.location.reload()
     }
   };
   // const onEditHandler=async(id)=>{

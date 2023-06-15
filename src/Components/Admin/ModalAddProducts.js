@@ -45,6 +45,9 @@ const ModalAddProducts = (props) => {
     const data = await response.json();
     console.log(data);
     alert("Product added successfully");
+    props.handleCloseModal()
+    window.location.reload()
+
   };
   return (
     <div

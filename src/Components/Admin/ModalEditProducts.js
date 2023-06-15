@@ -41,6 +41,7 @@ const ModalEditProducts = ({ theProducts,handleCloseEditModal }) => {
     setCategory("");
     setImage(""); 
     handleCloseEditModal()
+    window.location.reload()
     
   };
   return (
