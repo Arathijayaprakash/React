@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import Products from "./Products";
 import { Provider } from "react-redux";
-import store from "../../store";
+import { store, persistor } from "../../store";
+import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter } from "react-router-dom";
 
 jest.mock("../useFetch", () => ({
@@ -41,22 +42,26 @@ describe("Products component", () => {
   test("renders a list of products", () => {
     render(
       <Provider store={store}>
-        <BrowserRouter>
-          <Products />
-        </BrowserRouter>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter>
+            <Products />
+          </BrowserRouter>
+        </PersistGate>
       </Provider>
     );
     expect(screen.getByText("Product 1")).toBeInTheDocument();
     expect(screen.getByText("Product 2")).toBeInTheDocument();
     expect(screen.getByText("Product 3")).toBeInTheDocument();
   });
-  
+
   test("renders pagination buttons", () => {
     render(
       <Provider store={store}>
-        <BrowserRouter>
-          <Products />
-        </BrowserRouter>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter>
+            <Products />
+          </BrowserRouter>
+        </PersistGate>
       </Provider>
     );
     expect(screen.getByText("prev")).toBeInTheDocument();

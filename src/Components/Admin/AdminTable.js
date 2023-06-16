@@ -6,7 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, Modal } from "@mui/material";
+import { Button } from "@mui/material";
+import Modal from "@mui/material/Modal";
 import ModalAddProducts from "./ModalAddProducts";
 import ModalEditProducts from "./ModalEditProducts";
 import classes from "./Admin.module.css";
@@ -42,6 +43,15 @@ const AdminTable = ({
           Add Products
         </Button>
       </div>
+      <nav>
+        <Pagination
+          productsPerPage={productsPerPage}
+          totalProducts={products.length}
+          paginate={paginate}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      </nav>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -56,7 +66,9 @@ const AdminTable = ({
         </TableHead>
         <TableBody>
           {isLoading ? (
-            <p className={classes.loading}>Loading...</p>
+            <TableRow>
+              <TableCell className={classes.loading}>Loading...</TableCell>
+            </TableRow>
           ) : (
             currentProducts.map((product) => (
               <TableRow
@@ -95,23 +107,21 @@ const AdminTable = ({
             ))
           )}
         </TableBody>
-        <Pagination
-          productsPerPage={productsPerPage}
-          totalProducts={products.length}
-          paginate={paginate}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
       </Table>
       <Modal open={open} onClose={handleCloseModal}>
-        <ModalAddProducts handleCloseModal={handleCloseModal} />
+        <div>
+          <ModalAddProducts handleCloseModal={handleCloseModal} />
+        </div>
       </Modal>
       <Modal open={openEdit} onClose={handleCloseEditModal}>
-        <ModalEditProducts handleCloseEditModal={handleCloseEditModal}
-          theProducts={currentProducts.find(
-            (product) => product.id === editProductId
-          )}
-        />
+        <div>
+          <ModalEditProducts
+            handleCloseEditModal={handleCloseEditModal}
+            theProducts={currentProducts.find(
+              (product) => product.id === editProductId
+            )}
+          />
+        </div>
       </Modal>
     </TableContainer>
   );

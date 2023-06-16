@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { Provider } from "react-redux";
-import store from "../../store";
+import { store, persistor } from "../../store";
+import { PersistGate } from "redux-persist/integration/react";
 import Login from "./Login";
 import { BrowserRouter } from "react-router-dom";
 
@@ -9,9 +10,11 @@ describe("Login component", () => {
   it("should login with valid credentials", async () => {
     render(
       <Provider store={store}>
-        <BrowserRouter>
-          <Login />
-        </BrowserRouter>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter>
+            <Login />
+          </BrowserRouter>
+        </PersistGate>
       </Provider>
     );
     const usernameInput = screen.getByLabelText("Username");
@@ -21,7 +24,5 @@ describe("Login component", () => {
     fireEvent.change(usernameInput, { target: { value: "admin@gmail.com" } });
     fireEvent.change(passwordInput, { target: { value: "admin" } });
     fireEvent.click(loginButton);
-
-   
   });
 });

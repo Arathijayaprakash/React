@@ -26,12 +26,15 @@ const cartSlice = createSlice({
           totalPrice: newItem.price,
           title: newItem.title,
         });
+        state.cartTotalAmount += +newItem.price;
+
       } else {
         existingItem.quantity++;
         existingItem.totalPrice = +existingItem.totalPrice + +newItem.price;
+        state.cartTotalAmount += +newItem.price;
+
       }
-      state.cartTotalAmount = +state.cartTotalAmount + +newItem.price;
-      // localStorage.setItem('cartItems',JSON.stringify(state.cartItems))
+      
     },
     removeFromCart(state, action) {
       const id = action.payload;
@@ -45,7 +48,7 @@ const cartSlice = createSlice({
         existingItem.quantity--;
         existingItem.totalPrice = existingItem.totalPrice - existingItem.price;
       }
-      // localStorage.setItem('cartItems',JSON.stringify(state.cartItems))
+      
     },
     removeItem(state, action) {
       const id = action.payload;

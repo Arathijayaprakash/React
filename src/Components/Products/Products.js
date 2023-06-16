@@ -11,6 +11,7 @@ export default function Products() {
   const [products] = useFetch(
     "https://ebeautyapp-55c72-default-rtdb.firebaseio.com/products.json"
   );
+  console.log(products);
   const indexOfLast = currentPage * productsPerPage;
   const indexOfFirst = indexOfLast - productsPerPage;
   const currentProducts = products.slice(indexOfFirst, indexOfLast);

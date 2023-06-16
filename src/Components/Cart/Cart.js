@@ -37,9 +37,9 @@ const Cart = () => {
   let cart = (
     <div>
       <ul className={classes.cartItems}>
-        {cartData.cartItems.map((item) => (
+        {cartData.cartItems.map((item,index) => (
           <CartItem
-            key={item.id}
+            key={index}
             item={{
               id: item.id,
               title: item.title,

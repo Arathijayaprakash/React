@@ -4,9 +4,7 @@ import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
 import { cartActions } from "../../store/cart-slice";
 import { useSelector, useDispatch } from "react-redux";
-import DeleteForeverSharpIcon from '@mui/icons-material/DeleteForeverSharp';
-
-
+import DeleteForeverSharpIcon from "@mui/icons-material/DeleteForeverSharp";
 
 const ProductItem = (props) => {
   const { id, title, price, image, quantity } = props;
@@ -39,18 +37,16 @@ const ProductItem = (props) => {
       const data = await response.json();
       console.log(data);
       alert("Product Deleted successfully");
-      window.location.reload()
+      window.location.reload();
     }
   };
-  // const onEditHandler=async(id)=>{
-  //   alert('Edit')
-  // }
+
   return (
     <div className={classes.products}>
       <ul key={id} className={classes.list}>
         <Card sx={{ maxWidth: 300 }} className={classes.item}>
           <h3>{title}</h3>
-          
+
           <img src={image} alt={title} />
           <div className={classes.content}>
             <h4>₹{price}</h4>
@@ -64,30 +60,15 @@ const ProductItem = (props) => {
               </Button>
             ) : (
               <div>
-              <Button
-                variant="contained"
-                color="error"
-                onClick={() => onDeleteHandler(id)}
-              >
-               <DeleteForeverSharpIcon/>
-              </Button>
-              {/* <Button
-                variant="contained"
-                color="inherit"
-                onClick={() => onEditHandler(id)}
-              >
-               <EditRounded/>
-              </Button> */}
+                <Button
+                  variant="contained"
+                  color="error"
+                  onClick={() => onDeleteHandler(id)}
+                >
+                  <DeleteForeverSharpIcon />
+                </Button>
               </div>
-             
-              
-              
             )}
-            {/* {adminLogged && (
-              <Button variant="contained" color="error" onClick={onDeleteHandler(id)}>
-                Delete
-              </Button>
-            )} */}
           </div>
         </Card>
       </ul>

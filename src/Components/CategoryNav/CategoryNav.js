@@ -16,7 +16,7 @@ const CategoryNav = () => {
     <nav>
       <ul className={classes.lists}>
         {unique.map((category) => (
-          <Link to={`/products/${category}`}>
+          <Link key={category} to={`/products/${category}`}>
             <li>{category}</li>
           </Link>
         ))}

@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import store from "../../store";
+import { PersistGate } from "redux-persist/integration/react";
+import {store,persistor} from "../../store";
 import { BrowserRouter } from "react-router-dom";
 import CategoryNav from "./CategoryNav";
 
@@ -16,9 +17,11 @@ describe("Category nav", () => {
   test("renders unique categories as nav links", () => {
     render(
       <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <CategoryNav />
         </BrowserRouter>
+        </PersistGate>
       </Provider>
     );
     const skinLink = screen.getByText(/skin/i);

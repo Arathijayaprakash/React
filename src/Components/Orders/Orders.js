@@ -9,7 +9,6 @@ const Orders = () => {
     "https://ebeautyapp-55c72-default-rtdb.firebaseio.com/orders.json"
   );
 
- 
   const user = orders.filter((order) => order.user === userEmail);
   const totalPrices = user.map((item) => item.totalPrice);
   const orderTotal = totalPrices.reduce((sum, price) => {
@@ -19,8 +18,9 @@ const Orders = () => {
   let userOrder = (
     <div>
       <div className={classes.orders}>
-        {user.map((item) => (
+        {user.map((item, index) => (
           <OrderItems
+            key={index}
             user={item.user}
             title={item.title}
             image={item.image}

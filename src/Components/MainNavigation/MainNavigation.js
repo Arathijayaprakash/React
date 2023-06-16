@@ -114,7 +114,7 @@ export default function MainNavigation() {
             </Link>
 
             {unique.map((category) => (
-              <Link
+              <Link key={category}
                 to={`/products/${category}`}
                 style={{ textDecoration: "none", color: "salmon" }}
               >
