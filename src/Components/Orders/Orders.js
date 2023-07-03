@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import useFetchOrders from "../useFetchOrders";
-import OrderItems from "./OrderItems";
+// import OrderItems from "./OrderItems";
 import classes from "./Orders.module.css";
+
+const OrderItems = React.lazy(() => import("../Orders/OrderItems")); //Dynamically imported
 
 const Orders = () => {
   const userEmail = localStorage.getItem("userEmail");
@@ -19,15 +21,17 @@ const Orders = () => {
     <div>
       <div className={classes.orders}>
         {user.map((item, index) => (
-          <OrderItems
-            key={index}
-            user={item.user}
-            title={item.title}
-            image={item.image}
-            price={item.price}
-            quantity={item.quantity}
-            totalPrice={item.totalPrice}
-          />
+          <Suspense key={index} fallback={<div>Loading...</div>}>
+            <OrderItems
+              key={index}
+              user={item.user}
+              title={item.title}
+              image={item.image}
+              price={item.price}
+              quantity={item.quantity}
+              totalPrice={item.totalPrice}
+            />
+          </Suspense>
         ))}
       </div>
       <p>Order Total: ₹{orderTotal}</p>
