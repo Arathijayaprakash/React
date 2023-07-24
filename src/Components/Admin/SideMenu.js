@@ -2,6 +2,7 @@ import React from "react";
 import { Menu } from "antd";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import TableViewIcon from "@mui/icons-material/TableView";
+import AddLocationIcon from '@mui/icons-material/AddLocation';
 import { useNavigate } from "react-router-dom";
 import PieChartIcon from "@mui/icons-material/PieChart";
 import ViewColumnIcon from "@mui/icons-material/ViewColumn";
@@ -35,6 +36,11 @@ const SideMenu = () => {
             label: "Statistics",
             icon: <PieChartIcon />,
             key: "/adminHome/statistics",
+          },
+          {
+            label: "Store",
+            icon: <AddLocationIcon/>,
+            key: "/adminHome/store",
           },
         ]}
       ></Menu>

@@ -11,6 +11,7 @@ import SignUp from "./Components/SignUp/SignUp";
 import Orders from "./Components/Orders/Orders";
 import ProductCategory from "./Components/Products/ProductCategory";
 import { CheckAdminAuthLoader, CheckUserAuthLoader } from "./Auth/auth";
+import Store from "./Components/Admin/Store";
 
 function App() {
   const router = createBrowserRouter([
@@ -38,6 +39,9 @@ function App() {
                 { path: "products", element: <ProductListPage /> },
                 { path: "admintable", element: <Admin /> },
                 { path: "statistics", element: <Statistics /> },
+                { path: "store", element: <Store/> },
+
+              
               ],
             },
           ],
