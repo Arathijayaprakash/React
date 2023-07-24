@@ -1,7 +1,25 @@
 .map-container {
     height: 500px;
-    width: 1100px;
+    width: 1300px;
     z-index: 0;
     border: 2px solid #ccc;
     border-radius: 5px;
+  }
+  .head{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(192, 20, 120);
+    font-style: italic;
+    font-weight: 50px;
+  }
+
+
+  /* Add styles for the container div */
+  .store-user {
+    text-align: center; /* Center the text inside the container */
+    width: 100%; /* Optional: Limit the width of the container */
+    padding: 20px; /* Optional: Add padding to the container */
+    background-color: #ffffff; /* Optional: Set a background color for the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow for a visual effect */
   }

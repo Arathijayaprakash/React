@@ -128,6 +128,12 @@ export default function MainNavigation() {
             >
               <MenuItem onClick={handleClose}>Your Orders</MenuItem>
             </Link>
+            <Link
+              to="stores"
+              style={{ textDecoration: "none", color: "salmon" }}
+            >
+              <MenuItem onClick={handleClose}>Stores</MenuItem>
+            </Link>
           </Menu>
 
           <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>

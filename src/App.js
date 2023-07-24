@@ -12,6 +12,7 @@ import Orders from "./Components/Orders/Orders";
 import ProductCategory from "./Components/Products/ProductCategory";
 import { CheckAdminAuthLoader, CheckUserAuthLoader } from "./Auth/auth";
 import Store from "./Components/Admin/Store";
+import Stores from "./Pages/Stores";
 
 function App() {
   const router = createBrowserRouter([
@@ -23,6 +24,7 @@ function App() {
         { path: "products", element: <ProductListPage /> },
         { path: "login", element: <Loginpage /> },
         { path: "signup", element: <SignUp /> },
+        { path: "stores", element: <Stores /> },
         {
           element: <CheckUserAuthLoader />,
           children: [{ path: "home", element: <HomePage /> }],
@@ -39,9 +41,7 @@ function App() {
                 { path: "products", element: <ProductListPage /> },
                 { path: "admintable", element: <Admin /> },
                 { path: "statistics", element: <Statistics /> },
-                { path: "store", element: <Store/> },
-
-              
+                { path: "store", element: <Store /> },
               ],
             },
           ],

@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { redirect } from "react-router-dom";
 import AdminTable from "./AdminTable";
 
-
 const Admin = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const productsPerPage = 2;
@@ -49,19 +48,17 @@ const Admin = () => {
     }
   };
 
-  const [openEdit,setOpenEdit]=React.useState(false)
-  const handleOpenEditModal=()=>{
-    setOpenEdit(true)
-  }
-  const handleCloseEditModal=()=>{
-    setOpenEdit(false)
-  }
+  const [openEdit, setOpenEdit] = React.useState(false);
+  const handleOpenEditModal = () => {
+    setOpenEdit(true);
+  };
+  const handleCloseEditModal = () => {
+    setOpenEdit(false);
+  };
 
-  const onEditHandler=async(id)=>{
-    
-    handleOpenEditModal()
-   
-  }
+  const onEditHandler = async (id) => {
+    handleOpenEditModal();
+  };
 
   const [open, setOpen] = React.useState(false);
   const handleOpenModal = () => {
@@ -76,9 +73,7 @@ const Admin = () => {
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   return (
-    <div >
-      
-      
+    <div>
       <AdminTable
         isLoading={isLoading}
         onDeleteHandler={onDeleteHandler}

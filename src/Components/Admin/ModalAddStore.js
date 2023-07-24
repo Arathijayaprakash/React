@@ -8,7 +8,8 @@ const ModalAddStore = (props) => {
   const [address, setAddress] = useState("");
   const [longitude, setLongitude] = useState("");
   const [latitude, setLatitude] = useState("");
-  const [operatingHours, setOperatingHours] = useState("");
+  const [openingTime, setOpeningTime] = useState("");
+  const [closingTime, setClosingTime] = useState("");
   const [phone, setPhone] = useState("");
   const unique_id = uuid();
   const small_id = unique_id.slice(0, 8);
@@ -25,8 +26,11 @@ const ModalAddStore = (props) => {
   const onSetLatitude = (e) => {
     setLatitude(e.target.value);
   };
-  const onSetOperatingHours = (e) => {
-    setOperatingHours(e.target.value);
+  const onSetOpeningTime = (e) => {
+    setOpeningTime(e.target.value);
+  };
+  const onSetClosingTime = (e) => {
+    setClosingTime(e.target.value);
   };
   const onSetPhone = (e) => {
     setPhone(e.target.value);
@@ -44,7 +48,8 @@ const ModalAddStore = (props) => {
       longitude: longitude,
       latitude: latitude,
       phone: phone,
-      operatingHours: operatingHours,
+      openingTime: openingTime,
+      closingTime:closingTime
     };
     const response=await fetch(
       "https://ebeautyapp-55c72-default-rtdb.firebaseio.com//store.json",
@@ -60,6 +65,8 @@ const ModalAddStore = (props) => {
     console.log(data);
     alert("Store added successfully")
     props.handleCloseModal()
+    window.location.reload()
+    
 
   };
   return (
@@ -67,7 +74,7 @@ const ModalAddStore = (props) => {
       style={{
         backgroundColor: "white",
         marginLeft: "150px",
-        marginTop: "50px",
+        marginTop: "20px",
         marginRight: "150px",
         padding: "10px",
         borderRadius: "10px",
@@ -130,13 +137,23 @@ const ModalAddStore = (props) => {
         />
         <TextField
           id="standard-full-width"
-          label="Add Operating hours"
+          label="Add Opening time"
           style={{ margin: 8 }}
-          onChange={onSetOperatingHours}
-          placeholder="Enter Operating hours"
+          onChange={onSetOpeningTime}
+          placeholder="Enter Opening time"
           fullWidth
           required
-          defaultValue={props.operatingHours}
+          defaultValue={props.openingTime}
+        />
+        <TextField
+          id="standard-full-width"
+          label="Add Closing time"
+          style={{ margin: 8 }}
+          onChange={onSetClosingTime}
+          placeholder="Enter Closing time"
+          fullWidth
+          required
+          defaultValue={props.closingTime}
         />
         <div>
           {" "}

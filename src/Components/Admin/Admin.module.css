@@ -15,8 +15,9 @@
     padding-left: 15rem;
 }
 .dash{
-    padding-left: 1rem;
+    padding-left: 3rem;
     padding-bottom: 1rem;
+    width: 100%;
     background-image:  linear-gradient(to right, #8f2e5b, #772756);;
 }
 .dash h3{
@@ -28,12 +29,18 @@
 }
 .chart{
     background-image:  linear-gradient(to right, #ebdfe4, #e299c4);
-    margin-top: -50px;
+    align-items: center;
+    justify-content: center;
+    /* margin-top: -50px;
+    margin-left: 3rem; */
+    border-radius: .5rem;
+    width: 100%;
 }
 .home{
     display: flex;
     padding-top: 4rem;
-    flex: 1;
-    justify-content: flex-start;
-    align-items: flex-start;
+    width: 100%;
+    /* flex: 1; */
+    /* justify-content: flex-start; */
+    /* align-items: flex-start; */
 }

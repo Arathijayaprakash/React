@@ -6,7 +6,7 @@ import "./StoreLocator.css";
 
 const StoreLocator = () => {
   const [stores, setStores] = useState([]);
-  
+
   useEffect(() => {
     const fetchStores = async () => {
       const response = await fetch(
@@ -22,15 +22,14 @@ const StoreLocator = () => {
           longitude: data[key].longitude,
           latitude: data[key].latitude,
           phone: data[key].phone,
-          operatingHours: data[key].operatingHours,
+          openingTime: data[key].openingTime,
+          closingTime:data[key].closingTime
         });
       }
       setStores(loadedStoreDetails);
     };
     fetchStores();
   }, []);
- 
-
 
   return (
     <div>
@@ -45,15 +44,21 @@ const StoreLocator = () => {
         contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-         {stores.map((store) => (
+        {stores.map((store) => (
           <Marker
             key={store.id}
             position={{ lat: store.latitude, lng: store.longitude }}
-          ><Popup> <h3>{store.name}</h3>
-                <p>{store.address}</p></Popup></Marker>
+          >
+            <Popup>
+              {" "}
+              <h3>{store.name}</h3>
+              <p>{store.address}</p>
+              <p style={{color:'GrayText'}}>Open : {store.openingTime} to {store.closingTime}</p>
+              <p>Contact : {store.phone}</p>
+            </Popup>
+          </Marker>
         ))}
       </MapContainer>
-    
     </div>
   );
 };

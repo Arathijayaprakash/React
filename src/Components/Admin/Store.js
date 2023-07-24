@@ -14,13 +14,13 @@ const Store = () => {
     setOpen(false);
   };
   return (
-    <div>
-      
-
-      <Button color="info" variant="outlined" onClick={handleOpenModal}>
-        <AddLocationAltRounded />
+    <div style={{textAlign:'center'}}>
+      <Button color="info" variant="outlined" onClick={handleOpenModal} style={{margin:'1rem'}}>
+       <AddLocationAltRounded />add store
       </Button>
-      <StoreLocator />
+  <div>
+  <StoreLocator/>
+  </div>
 
       <Modal open={open} onClose={handleCloseModal}>
         <div>
