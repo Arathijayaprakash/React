@@ -32,10 +32,10 @@ const StoreLocator = () => {
   }, []);
 
   return (
-    <div>
+    <div className="store-locator-body">
       <MapContainer
         center={[9.940009, 76.250695]}
-        zoom={13}
+        zoom={11}
         scrollWheelZoom={false}
         className="map-container"
       >

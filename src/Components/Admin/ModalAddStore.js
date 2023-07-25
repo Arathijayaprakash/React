@@ -69,6 +69,7 @@ const ModalAddStore = (props) => {
     
 
   };
+  
   return (
     <div
       style={{
@@ -155,7 +156,7 @@ const ModalAddStore = (props) => {
           required
           defaultValue={props.closingTime}
         />
-        <div>
+        <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
           {" "}
           <Button
             className="addbtn"

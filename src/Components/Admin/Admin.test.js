@@ -7,5 +7,4 @@ describe("Admin", () => {
     const table = await screen.findByRole("table");
     expect(table).toBeInTheDocument();
   });
-  
 });

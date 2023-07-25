@@ -14,7 +14,7 @@ const Store = () => {
     setOpen(false);
   };
   return (
-    <div style={{textAlign:'center'}}>
+    <div style={{width:'100%'}}>
       <Button color="info" variant="outlined" onClick={handleOpenModal} style={{margin:'1rem'}}>
        <AddLocationAltRounded />add store
       </Button>
