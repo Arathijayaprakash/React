@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import cartSlice from "./cart-slice";
 import uiSlice from "./ui-slice";
 import productSlice from "./product-slice";
@@ -17,8 +17,17 @@ const persistedReducer = persistReducer(
     product: productSlice.reducer,
   })
 );
+const middleware=[
+  ...getDefaultMiddleware({
+    serializableCheck:{
+      ignoredActions:["persist/PERSIST",],
+      ignoredPaths:["register"],
+    }
+  })
+]
 const store = configureStore({
   reducer: persistedReducer,
+  middleware,
 });
 const persistor = persistStore(store);
 export { store, persistor };

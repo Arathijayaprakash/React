@@ -6,6 +6,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import Login from "./Login";
 import { BrowserRouter } from "react-router-dom";
 
+global.alert=jest.fn()
+
 describe("Login component", () => {
   it("should login with valid credentials", async () => {
     render(
@@ -24,5 +26,8 @@ describe("Login component", () => {
     fireEvent.change(usernameInput, { target: { value: "admin@gmail.com" } });
     fireEvent.change(passwordInput, { target: { value: "admin" } });
     fireEvent.click(loginButton);
+
+    expect(global.alert).toHaveBeenCalledTimes(1);
+    expect(global.alert).toHaveBeenCalledWith("login successfull")
   });
 });
