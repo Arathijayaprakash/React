@@ -48,11 +48,11 @@ test("renders the table with pagination with buttons",()=>{
     })
     expect(addProductsButton).toBeInTheDocument()
 
-    // const tableHeaders=screen.getAllByRole("columnheader");
-    // expect(tableHeaders).toHaveLength(6)
+    const tableHeaders=screen.getAllByRole("columnheader");
+    expect(tableHeaders).toHaveLength(6)
 
-    // const productsRow=screen.getAllByRole("row")
-    // expect(productsRow).toHaveLength(productsPerPage+1)
+    const productsRow=screen.getAllByRole("row")
+    expect(productsRow).toHaveLength(productsPerPage+1)
 
     // const paginationComponent=screen.getAllByRole("navigation");
     // expect(paginationComponent).toBeInTheDocument()

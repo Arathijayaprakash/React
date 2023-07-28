@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { store, persistor } from "../../store";
 import { PersistGate } from "redux-persist/integration/react";
 import Login from "./Login";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 
 global.alert=jest.fn()
 
@@ -13,9 +13,9 @@ describe("Login component", () => {
     render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <MemoryRouter>
             <Login />
-          </BrowserRouter>
+          </MemoryRouter>
         </PersistGate>
       </Provider>
     );

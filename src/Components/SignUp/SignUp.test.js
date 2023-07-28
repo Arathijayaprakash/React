@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store, persistor } from "../../store";
 import { PersistGate } from "redux-persist/integration/react";
-import { BrowserRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router-dom";
 import SignUp from "./SignUp";
 
 describe("SignUp tests", () => {
@@ -10,9 +10,9 @@ describe("SignUp tests", () => {
     render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <MemoryRouter>
             <SignUp />
-          </BrowserRouter>
+          </MemoryRouter>
         </PersistGate>
       </Provider>
     );
@@ -23,9 +23,9 @@ describe("SignUp tests", () => {
     render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <MemoryRouter>
             <SignUp />
-          </BrowserRouter>
+          </MemoryRouter>
         </PersistGate>
       </Provider>
     );
@@ -36,9 +36,9 @@ describe("SignUp tests", () => {
     render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <MemoryRouter>
             <SignUp />
-          </BrowserRouter>
+          </MemoryRouter>
         </PersistGate>
       </Provider>
     );
@@ -49,9 +49,9 @@ describe("SignUp tests", () => {
     render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <MemoryRouter>
             <SignUp />
-          </BrowserRouter>
+          </MemoryRouter>
         </PersistGate>
       </Provider>
     );
@@ -62,9 +62,9 @@ describe("SignUp tests", () => {
     render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <MemoryRouter>
             <SignUp />
-          </BrowserRouter>
+          </MemoryRouter>
         </PersistGate>
       </Provider>
     );
@@ -75,9 +75,9 @@ describe("SignUp tests", () => {
     render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <MemoryRouter>
             <SignUp />
-          </BrowserRouter>
+          </MemoryRouter>
         </PersistGate>
       </Provider>
     );
@@ -88,9 +88,9 @@ describe("SignUp tests", () => {
     render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <MemoryRouter>
             <SignUp />
-          </BrowserRouter>
+          </MemoryRouter>
         </PersistGate>
       </Provider>
     );
@@ -101,9 +101,9 @@ describe("SignUp tests", () => {
     render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <MemoryRouter>
             <SignUp />
-          </BrowserRouter>
+          </MemoryRouter>
         </PersistGate>
       </Provider>
     );
@@ -114,9 +114,9 @@ describe("SignUp tests", () => {
     render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <MemoryRouter>
             <SignUp />
-          </BrowserRouter>
+          </MemoryRouter>
         </PersistGate>
       </Provider>
     );
@@ -127,9 +127,9 @@ describe("SignUp tests", () => {
     render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <MemoryRouter>
             <SignUp />
-          </BrowserRouter>
+          </MemoryRouter>
         </PersistGate>
       </Provider>
     );
@@ -141,9 +141,9 @@ describe("SignUp tests", () => {
     render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <MemoryRouter>
             <SignUp />
-          </BrowserRouter>
+          </MemoryRouter>
         </PersistGate>
       </Provider>
     );
